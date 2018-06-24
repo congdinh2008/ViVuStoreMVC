@@ -1,17 +1,14 @@
 ﻿@model BooksListViewModel
 @{
-    ViewData["Title"] = "List Books";
+    ViewData["Title"] = "All books";
 }
 
-@ViewBag.CurrentCategory
-@foreach (var book in Model.Books)
-{
-    <div class="col-md-3">
-        <img class="img-fluid img-thumbnail" src="@book.ImageThumbnailUrl"/>
-        <h3>
-            <a asp-controller="Book" asp-action="Details" asp-route-id="@book.Id">@book.Title</a>
-        </h3>
-        <h3>@book.Price.ToString("c")</h3>
-    </div>
-}
+<h2>@ViewBag.CurrentCategory</h2>
+
+<div class="row">
+    @foreach (Book book in Model.Books)
+    {
+        @await Html.PartialAsync("_BookOverviewSummary", book)
+    }
+</div>
 

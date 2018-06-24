@@ -1,1 +1,16 @@
-﻿<p>Home</p>
+﻿@model HomeViewModel
+
+@{
+    ViewData["Title"] = "Home";
+}
+
+@await Html.PartialAsync("_Carousel")
+
+<h2>Books of the week</h2>
+
+<div class="row">
+    @foreach (Book book in Model.BooksOfTheWeek)
+    {
+        @await Html.PartialAsync("_BookOfTheWeekSummary", book)
+    }
+</div>

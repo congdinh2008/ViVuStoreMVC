@@ -29,6 +29,10 @@ namespace ViVuStoreMVC.Models
 
         public string BookDimensions { get; set; }
 
+        public bool IsBookOfTheWeek { get; set; }
+
+        public bool InStock { get; set; }
+
         public Guid PublisherId { get; set; }
 
         [ForeignKey("PublisherId")]
