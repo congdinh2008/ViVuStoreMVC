@@ -16,9 +16,12 @@ namespace ViVuStoreMVC.Repositories
             _context = context;
         }
 
-        public IEnumerable<Category> GetCategories()
+        public IEnumerable<Category> Categories
         {
-            return _context.Categories.ToList();
+            get
+            {
+                return _context.Categories;
+            }
         }
     }
 }

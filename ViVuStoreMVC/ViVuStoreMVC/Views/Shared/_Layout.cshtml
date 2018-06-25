@@ -9,6 +9,7 @@
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css" />
         <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
@@ -16,6 +17,7 @@
               crossorigin="anonymous"
               asp-fallback-href="~/lib/bootstrap/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     </environment>
 </head>
 <body>
@@ -23,17 +25,25 @@
         <a class="navbar-brand" asp-controller="Home" asp-action="Index">
             ViVu Store
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" 
-                data-target="#navbarsExampleDefault" 
-                aria-controls="navbarsExampleDefault" aria-expanded="false" 
+        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarsExampleDefault"
+                aria-controls="navbarsExampleDefault" aria-expanded="false"
                 aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Home" asp-action="About">About</a></li>
+                @await Component.InvokeAsync("CategoryMenu")
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-controller="Home"
+                       asp-action="About">Giới Thiệu</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-controller="Home"
+                       asp-action="Contact">Liên Hệ</a>
+                </li>
+                @await Component.InvokeAsync("ShoppingCartSummary")
             </ul>
         </div>
     </nav>
@@ -41,13 +51,14 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-3 sidebar hidden-xs">
-                <h3>Danh Mục Sách</h3>
+                <h4>Danh Mục Sách</h4>
                 <ul class="navbar-nav mr-auto">
                     <li>Nhà Xuất Bản</li>
                     <li>Tìm Theo Giá</li>
                     <li>Đánh Giá</li>
                     <li>Tác Giả</li>
                 </ul>
+                @*@await Html.PartialAsync("_SideBar")*@
             </div>
             <div class="col-sm-9 product-listing">
                 @RenderBody()

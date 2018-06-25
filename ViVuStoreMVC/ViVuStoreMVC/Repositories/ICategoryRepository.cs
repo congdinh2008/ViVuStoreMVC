@@ -5,6 +5,6 @@ namespace ViVuStoreMVC.Repositories
 {
     public interface ICategoryRepository
     {
-        IEnumerable<Category> GetCategories();
+        IEnumerable<Category> Categories { get; }
     }
 }
