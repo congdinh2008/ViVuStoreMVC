@@ -34,9 +34,7 @@
                     <td>@line.Amount</td>
                     <td>@line.Book.Price.ToString("C0", CultureInfo.CreateSpecificCulture("vi-VN"))</td>
                     <td>
-                        @((line.Amount * line.Book.Price)
-                                                                                                    .ToString("C0", CultureInfo
-                                                                                                    .CreateSpecificCulture("vi-VN")))
+                        @((line.Amount * line.Book.Price).ToString("C0", CultureInfo.CreateSpecificCulture("vi-VN")))
                     </td>
                 </tr>
             }
@@ -45,10 +43,13 @@
             <tr>
                 <td colspan="4">Tổng Tiền:</td>
                 <td class="text-right">
-                    @Model.ShoppingCartTotal.ToString("C0", CultureInfo
-                   .CreateSpecificCulture("vi-VN"))
+                    @Model.ShoppingCartTotal.ToString("C0", CultureInfo.CreateSpecificCulture("vi-VN"))
                 </td>
             </tr>
         </tfoot>
     </table>
+
+    <div class="text-center">
+        <a class="btn btn-primary" asp-controller="Order" asp-action="Checkout">Đặt Hàng</a>
+    </div>
 </div>

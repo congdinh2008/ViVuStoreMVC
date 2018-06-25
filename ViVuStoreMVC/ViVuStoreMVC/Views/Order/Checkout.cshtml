@@ -1,0 +1,64 @@
+﻿@model Order
+
+<h3>Mời Bạn Nhập Thông Tin Đơn Hàng</h3>
+<hr/>
+<form class="form-horizontal" asp-action="Checkout" method="post" role="form">
+    <div class="form-group">
+        <label asp-for="Name">Họ Tên:</label>
+        <div>
+            <input class="form-control" asp-for="Name" placeholder="Họ Tên..." />
+            <span class="text-danger" asp-validation-for="Name"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="City">Thành Phố:</label>
+        <div>
+            <input class="form-control" asp-for="City" placeholder="Thành Phố..." />
+            <span class="text-danger" asp-validation-for="City"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="District">Quận/Huyện:</label>
+        <div>
+            <input class="form-control" asp-for="District" placeholder="Quận/Huyện..." />
+            <span class="text-danger" asp-validation-for="District"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="Ward">Phường/Xã:</label>
+        <div>
+            <input class="form-control" asp-for="Ward" placeholder="Phường/Xã..." />
+            <span class="text-danger" asp-validation-for="Ward"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="Address">Địa Chỉ:</label>
+        <div>
+            <input class="form-control" asp-for="Address" placeholder="Địa Chỉ..." />
+            <span class="text-danger" asp-validation-for="Address"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="PostalCode">Postal code:</label>
+        <div>
+            <input class="form-control" asp-for="PostalCode" placeholder="Postal code..." />
+            <span class="text-danger" asp-validation-for="PostalCode"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="PhoneNumber">Số Điện Thoại:</label>
+        <div>
+            <input class="form-control" asp-for="PhoneNumber" placeholder="Số Điện Thoại..." />
+            <span class="text-danger" asp-validation-for="PhoneNumber"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="Email">Email:</label>
+        <div>
+            <input class="form-control" asp-for="Email" placeholder="Email của bạn..." />
+            <span class="text-danger" asp-validation-for="Email"></span>
+        </div>
+    </div>
+    <input type="submit" class="btn btn-primary" value="Complete order" />
+</form>
