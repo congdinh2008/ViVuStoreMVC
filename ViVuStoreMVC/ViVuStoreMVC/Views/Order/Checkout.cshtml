@@ -1,0 +1,62 @@
+﻿@model Order
+
+<form class="form-horizontal" asp-action="Checkout" method="post" role="form">
+    <div class="form-group">
+        <label asp-for="FirstName">First Name:</label>
+        <div>
+            <input class="form-control" asp-for="FirstName" placeholder="First name..." />
+            <span class="text-danger" asp-validation-for="FirstName"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="LastName">Last Name:</label>
+        <div>
+            <input class="form-control" asp-for="LastName" placeholder="Last name..." />
+            <span class="text-danger" asp-validation-for="LastName"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="AddressLine1">Address Line 1:</label>
+        <div>
+            <input class="form-control" asp-for="AddressLine1" placeholder="Address line 1..." />
+            <span class="text-danger" asp-validation-for="AddressLine1"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="AddressLine2">Address Line 2:</label>
+        <div>
+            <input class="form-control" asp-for="AddressLine2" placeholder="Address line 2..." />
+            <span class="text-danger" asp-validation-for="AddressLine2"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="PostalCode">Postal code:</label>
+        <div>
+            <input class="form-control" asp-for="PostalCode" placeholder="Your postal code..." />
+            <span class="text-danger" asp-validation-for="PostalCode"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="City">City:</label>
+        <div>
+            <input class="form-control" asp-for="City" placeholder="Your city..." />
+            <span class="text-danger" asp-validation-for="City"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="PhoneNumber">Phone Number:</label>
+        <div>
+            <input class="form-control" asp-for="PhoneNumber" placeholder="Your phone number..." />
+            <span class="text-danger" asp-validation-for="PhoneNumber"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="Email">Email:</label>
+        <div>
+            <input class="form-control" asp-for="Email" placeholder="Your email..." />
+            <span class="text-danger" asp-validation-for="Email"></span>
+        </div>
+    </div>
+    <input type="submit" class="btn btn-primary" value="Complete order" />
+</form>
