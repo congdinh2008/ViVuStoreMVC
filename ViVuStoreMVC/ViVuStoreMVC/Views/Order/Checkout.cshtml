@@ -1,7 +1,7 @@
 ﻿@model Order
 
 <h3>Mời Bạn Nhập Thông Tin Đơn Hàng</h3>
-<hr/>
+<hr />
 <form class="form-horizontal" asp-action="Checkout" method="post" role="form">
     <div class="form-group">
         <label asp-for="Name">Họ Tên:</label>
@@ -54,3 +54,7 @@
     </div>
     <input type="submit" class="btn btn-primary" value="Complete order" />
 </form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

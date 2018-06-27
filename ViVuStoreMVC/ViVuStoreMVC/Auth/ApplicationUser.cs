@@ -28,6 +28,10 @@ namespace ViVuStoreMVC.Auth
         [Display(Name = "Phường/Xã")]
         public string Ward { get; set; }
 
+        [MaxLength(20, ErrorMessage = "Địa chỉ dài không quá 100 ký tự.")]
+        [Display(Name = "Địa Chỉ")]
+        public string Address { get; set; }
+
         [Required]
         [DataType(DataType.Date)]
         [Display(Name = "Sinh Nhật")]

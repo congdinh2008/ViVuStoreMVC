@@ -1,4 +1,16 @@
-﻿<!DOCTYPE html>
+﻿@using System.Security.Claims
+@using System.Threading.Tasks
+@using ViVuStoreMVC.Auth
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Http
+@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Identity.EntityFrameworkCore
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject IAuthorizationService AuthorizationService
+@inject UserManager<ApplicationUser> UserManager
+
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -44,6 +56,10 @@
                        asp-action="Contact">Liên Hệ</a>
                 </li>
                 @await Component.InvokeAsync("ShoppingCartSummary")
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    @await Component.InvokeAsync("AdminMenu")
+                }
             </ul>
             <partial name="_LoginPartial" />
         </div>
