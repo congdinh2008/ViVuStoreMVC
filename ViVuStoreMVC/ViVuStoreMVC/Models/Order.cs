@@ -16,36 +16,30 @@ namespace ViVuStoreMVC.Models
         [MaxLength(50)]
         public string Name { get; set; }
 
-        [Required(ErrorMessage = "Vui lòng nhập Postal Code.")]
-        [Display(Name = "Postal code")]
-        [DataType(DataType.PostalCode)]
-        [StringLength(10, MinimumLength = 4)]
-        public string PostalCode { get; set; }
-
         [Required(ErrorMessage = "Vui lòng nhập địa chỉ của bạn.")]
         [MaxLength(150)]
-        [Display(Name = "Address")]
+        [Display(Name = "Địa Chỉ")]
         public string Address { get; set; }
 
-        [Required(ErrorMessage = "Vui lòng nhập tên phường bạn đang ở.")]
+        [Required(ErrorMessage = "Vui lòng nhập tên phường/xã bạn đang ở.")]
         [MaxLength(20)]
-        [Display(Name = "Ward")]
+        [Display(Name = "Phường/Xã")]
         public string Ward { get; set; }
 
-        [Required(ErrorMessage = "Vui lòng nhập tên phường bạn đang ở.")]
+        [Required(ErrorMessage = "Vui lòng nhập tên quận/huyện bạn đang ở.")]
         [MaxLength(20)]
-        [Display(Name = "District")]
+        [Display(Name = "Quận/Huyện")]
         public string District { get; set; }
 
         [Required(ErrorMessage = "Vui lòng nhập tên thành phố bạn đang ở.")]
         [MaxLength(20)]
-        [Display(Name= "City")]
+        [Display(Name = "Thành Phố")]
         public string City { get; set; }
 
         [Required(ErrorMessage = "Vui lòng nhập số điện thoại liên hệ của bạn.")]
         [MaxLength(11)]
         [DataType(DataType.PhoneNumber)]
-        [Display(Name = "Phone number")]
+        [Display(Name = "Số Điện Thoại")]
         public string PhoneNumber { get; set; }
 
         [DataType(DataType.EmailAddress, ErrorMessage = "Địa chỉ email của bạn không hợp lệ, vui lòng nhập lại")]
