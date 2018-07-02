@@ -3,8 +3,8 @@ using ViVuStoreMVC.Models;
 
 namespace ViVuStoreMVC.Repositories
 {
-    public interface ICategoryRepository
+    public interface IAuthorRepository
     {
-        IEnumerable<Category> GetCategories();
+        IEnumerable<Author> GetAuthors();
     }
 }

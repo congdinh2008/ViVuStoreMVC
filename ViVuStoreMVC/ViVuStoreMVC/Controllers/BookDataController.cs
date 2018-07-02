@@ -20,7 +20,7 @@ namespace ViVuStoreMVC.Controllers
         public IEnumerable<BookViewModel> LoadMoreBooks()
         {
             IEnumerable<Book> dbBooks = null;
-            dbBooks = _bookRepository.Books.OrderBy(b => b.Id).Take(10);
+            dbBooks = _bookRepository.GetBooks().OrderBy(b => b.Id).Take(10);
 
             List<BookViewModel> books = new List<BookViewModel>();
 

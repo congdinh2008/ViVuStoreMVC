@@ -16,26 +16,60 @@ namespace ViVuStoreMVC.Repositories
             _context = context;
         }
 
-        public IEnumerable<Book> Books
+        public IEnumerable<Book> GetBooks()
         {
-            get
-            {
-                return _context.Books.Include(c => c.Category);
-            }
+            return _context.Books
+                .Include(b => b.Category)
+                .Include(b=>b.Author)
+                .Include(b=>b.Publisher)
+                .ToList();
         }
 
-        public IEnumerable<Book> BooksOfTheWeek
+        public IEnumerable<Book> GetBooksOfTheWeek()
         {
-            get
-            {
-                return _context.Books.Include(c => c.Category)
-                    .Where(b => b.IsBookOfTheWeek);
-            }
+            return _context.Books
+                .Include(b => b.Category)
+                .Include(b => b.Author)
+                .Include(b => b.Publisher)
+                .Where(b=>b.IsBookOfTheWeek)
+                .ToList();
         }
 
+        public IEnumerable<Book> GetBooksByCategory(Guid categoryId)
+        {
+            return _context.Books
+                .Include(b => b.Category)
+                .Include(b => b.Author)
+                .Include(b => b.Publisher)
+                .Where(b => b.CategoryId == categoryId)
+                .ToList();
+        }
+        public IEnumerable<Book> GetBooksByAuthor(Guid authorId)
+        {
+            return _context.Books
+                .Include(b => b.Category)
+                .Include(b => b.Author)
+                .Include(b => b.Publisher)
+                .Where(b => b.AuthorId == authorId)
+                .ToList();
+        }
+
+        public IEnumerable<Book> GetBooksByPublisher(Guid publisherId)
+        {
+            return _context.Books
+                .Include(b => b.Category)
+                .Include(b => b.Author)
+                .Include(b => b.Publisher)
+                .Where(b => b.PublisherId == publisherId)
+                .ToList();
+        }
         public Book GetBookById(Guid bookId)
         {
-            return _context.Books.FirstOrDefault(b => b.Id == bookId);
+            return _context.Books
+                .Include(b=>b.Category)
+                .Include(b => b.Author)
+                .Include(b => b.Publisher)
+                .FirstOrDefault(b => b.Id == bookId);
         }
     }
 }

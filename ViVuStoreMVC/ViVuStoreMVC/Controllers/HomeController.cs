@@ -16,7 +16,7 @@ namespace ViVuStoreMVC.Controllers
         {
             var homeViewModel = new HomeViewModel()
             {
-                BooksOfTheWeek = _bookRepository.BooksOfTheWeek
+                BooksOfTheWeek = _bookRepository.GetBooksOfTheWeek()
             };
 
             return View(homeViewModel);

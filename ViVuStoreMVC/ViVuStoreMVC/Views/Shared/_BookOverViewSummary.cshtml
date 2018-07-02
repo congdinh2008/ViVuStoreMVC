@@ -3,9 +3,9 @@
 <div class="col-md-3">
     <img class="img-fluid img-thumbnail" src="@Model.ImageThumbnailUrl" />
     <p>
-        <a asp-controller="Book" asp-action="Details" asp-route-id="@Model.Id">@Model.Title</a>
+        <a asp-controller="Books" asp-action="Details" asp-route-id="@Model.Id">@Model.Title</a>
     </p>
-    <p>@Model.Price.ToString("c")</p>
+    <p>@Model.Price.ToString("C0", CultureInfo.CreateSpecificCulture("vi-VN"))</p>
     <p class="button">
         <a class="btn btn-primary" asp-controller="ShoppingCart"
            asp-action="AddToShoppingCart" asp-route-bookId="@Model.Id">

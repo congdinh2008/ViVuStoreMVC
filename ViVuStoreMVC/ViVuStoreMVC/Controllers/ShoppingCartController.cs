@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using ViVuStoreMVC.Models;
 using ViVuStoreMVC.Repositories;
 using ViVuStoreMVC.ViewModels;
@@ -11,13 +9,13 @@ namespace ViVuStoreMVC.Controllers
 {
     public class ShoppingCartController: Controller
     {
-        private readonly IBookRepository _bookRepository;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly ShoppingCart _shoppingCart;
 
-        public ShoppingCartController(IBookRepository bookRepository,
+        public ShoppingCartController(IUnitOfWork unitOfWork,
             ShoppingCart shoppingCart)
         {
-            _bookRepository = bookRepository;
+            _unitOfWork = unitOfWork;
             _shoppingCart = shoppingCart;
         }
 
@@ -37,7 +35,7 @@ namespace ViVuStoreMVC.Controllers
 
         public RedirectToActionResult AddToShoppingCart(Guid bookId)
         {
-            var selectedBook = _bookRepository.Books
+            var selectedBook = _unitOfWork.Books.GetBooks()
                 .FirstOrDefault(b => b.Id == bookId);
 
             if (selectedBook != null)
@@ -48,7 +46,7 @@ namespace ViVuStoreMVC.Controllers
 
         public RedirectToActionResult RemoveFromShoppingCart(Guid bookId)
         {
-            var selectedBook = _bookRepository.Books
+            var selectedBook = _unitOfWork.Books.GetBooks()
                 .FirstOrDefault(b => b.Id == bookId);
 
             if (selectedBook != null)

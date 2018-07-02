@@ -8,16 +8,13 @@ using ViVuStoreMVC.ViewModels;
 
 namespace ViVuStoreMVC.Controllers
 {
-    public class BookController : Controller
+    public class BooksController : Controller
     {
-        private readonly IBookRepository _bookRepository;
-        private readonly ICategoryRepository _categoryRepository;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public BookController(IBookRepository bookRepository,
-            ICategoryRepository categoryRepository)
+        public BooksController(IUnitOfWork unitOfWork)
         {
-            _bookRepository = bookRepository;
-            _categoryRepository = categoryRepository;
+            _unitOfWork = unitOfWork;
         }
 
         public IActionResult List(string category)
@@ -27,16 +24,16 @@ namespace ViVuStoreMVC.Controllers
 
             if (string.IsNullOrEmpty(category))
             {
-                books = _bookRepository.Books.OrderBy(b => b.Id);
+                books = _unitOfWork.Books.GetBooks().OrderBy(b => b.Title);
                 currentCategory = "All books";
             }
             else
             {
-                books = _bookRepository.Books
+                books = _unitOfWork.Books.GetBooks()
                     .Where(b => b.Category.Name == category)
-                    .OrderBy(b => b.Id);
+                    .OrderBy(b => b.Title);
 
-                currentCategory = _categoryRepository.Categories
+                currentCategory = _unitOfWork.Categories.GetCategories()
                     .FirstOrDefault(c => c.Name == category).Name;
             }
 
@@ -49,7 +46,7 @@ namespace ViVuStoreMVC.Controllers
 
         public IActionResult Details(Guid id)
         {
-            var book = _bookRepository.GetBookById(id);
+            var book = _unitOfWork.Books.GetBookById(id);
             if (book == null)
                 return NotFound();
 
