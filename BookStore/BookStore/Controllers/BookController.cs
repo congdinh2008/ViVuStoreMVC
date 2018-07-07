@@ -2,6 +2,7 @@
 using BookStore.Repositories;
 using BookStore.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -44,6 +45,15 @@ namespace BookStore.Controllers
                 Books = books,
                 CurrentCategory = currentCategory
             });
+        }
+
+        public IActionResult Details(Guid id)
+        {
+            var book = _bookRepository.GetBookById(id);
+            if (book == null)
+                return NotFound();
+
+            return View(book);
         }
     }
 }

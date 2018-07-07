@@ -3,3 +3,14 @@
 @{
     ViewData["Title"] = "Trang Chủ | ViVuStore.vn";
 }
+
+@await Html.PartialAsync("_Carousel")
+
+<h2>Sách Hay Trong Tuần</h2>
+
+<div class="row">
+    @foreach (Book book in Model.BooksOfTheWeek)
+    {
+        @await Html.PartialAsync("_BookOfTheWeekSummary", book)
+    }
+</div>

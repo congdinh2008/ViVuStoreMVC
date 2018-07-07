@@ -1,0 +1,57 @@
+﻿@model Book
+
+@{
+    ViewData["Title"] = $"{Model.Title} | ViVuStore.vn";
+}
+
+<div class="container product-container">
+    <div class="row product-summary">
+        <div class="col-md-4">
+            <div class="product-image">
+                <img class="img-fluid img-thumbnail" src="@Model.ImageThumbnailUrl"
+                     alt="@Model.Title" />
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="product-cart">
+                <h2>@Model.Title</h2>
+                <h4>
+                    @Model.Price.ToString("C0", CultureInfo.CreateSpecificCulture("vi-VN"))
+                </h4>
+
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="product-content-box">
+                <h3>Thông Tin Chi Tiết</h3>
+                <table class="table table-bordered">
+                    <tbody>
+                        <tr>
+                            <td>Tựa Sách</td>
+                            <td>@Model.Title</td>
+                        </tr>
+                        <tr>
+                            <td>Số Trang</td>
+                            <td>@Model.NumberOfPages</td>
+                        </tr>
+                        <tr>
+                            <td>Kích Thước</td>
+                            <td>@Model.BookDimensions</td>
+                        </tr>
+                        <tr>
+                            <td>Ngày Xuất Bản</td>
+                            <td>@Model.ReleaseDate.DateTime.ToShortDateString()</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h3>Giới Thiệu Sách</h3>
+                <div>
+                    <p><strong>@Model.Title</strong></p>
+                    <p class="description">@Model.Description</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
