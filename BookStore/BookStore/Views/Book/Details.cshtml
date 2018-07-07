@@ -18,7 +18,12 @@
                 <h4>
                     @Model.Price.ToString("C0", CultureInfo.CreateSpecificCulture("vi-VN"))
                 </h4>
-
+                <p class="button">
+                    <a class="btn btn-primary" asp-controller="ShoppingCart"
+                       asp-action="AddToShoppingCart" asp-route-bookId="@Model.Id">
+                        <span class="fas fa-shopping-cart"></span> CHỌN MUA
+                    </a>
+                </p>
             </div>
         </div>
     </div>

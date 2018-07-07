@@ -1,0 +1,51 @@
+﻿@model ShoppingCartViewModel
+
+@{
+    ViewData["Title"] = "Giỏ Hàng | ViVuStore.vn";
+}
+
+<h4>Giỏ Hàng Của Bạn Có: @Model.ShoppingCart.ShoppingCartItems.Count() Sản Phẩm</h4>
+<br />
+
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Ảnh Bìa</th>
+                <th scope="col">Tựa Sách</th>
+                <th scope="col">Số Lượng</th>
+                <th scope="col">Giá</th>
+                <th scope="col">Tổng Phụ</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var line in Model.ShoppingCart.ShoppingCartItems)
+            {
+                <tr>
+                    <td>
+                        <img class="img-fluid" style="max-width:200px;"
+                             src="@line.Book.ImageThumbnailUrl"
+                             alt="@line.Book.Title" />
+                    </td>
+                    <td>
+                        <a asp-controller="Book" asp-action="Details"
+                           asp-route-id="@line.Book.Id">@line.Book.Title</a>
+                    </td>
+                    <td>@line.Amount</td>
+                    <td>@line.Book.Price.ToString("C0", CultureInfo.CreateSpecificCulture("vi-VN"))</td>
+                    <td>
+                        @((line.Amount * line.Book.Price).ToString("C0", CultureInfo.CreateSpecificCulture("vi-VN")))
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="4">Tổng Tiền:</td>
+                <td class="text-right">
+                    @Model.ShoppingCartTotal.ToString("C0", CultureInfo.CreateSpecificCulture("vi-VN"))
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
