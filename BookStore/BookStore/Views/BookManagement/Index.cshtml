@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Book>
+
+<h2>Quản Lý Sách</h2>
+
+@if (!Model.Any())
+{
+    <tr><td colspan="3" class="text-center">Không có tựa sách nào.</td></tr>
+}
+else
+{
+    <table class="table table-condensed table-bordered">
+        <tr>
+            <th>Ảnh Bìa</th>
+            <th>Tựa Sách</th>
+            <th>Giá</th>
+            <th>Quản Lý</th>
+        </tr>
+
+        @foreach (var book in Model)
+        {
+            <tr>
+                <td><img style="max-width:150px;" src="@book.ImageThumbnailUrl" alt="@book.Title" /></td>
+                <td>@book.Title</td>
+                <td>@book.Price.ToString("C0", CultureInfo.CreateSpecificCulture("vi-VN"))</td>
+                <td>
+                    <form asp-action="DeleteBook"
+                          asp-route-bookId="@book.Id" method="post">
+                        <a class="btn btn-sm btn-primary"
+                           asp-action="EditBook"
+                           asp-route-bookId="@book.Id">Sửa</a>
+                        <button type="submit"
+                                onclick="return confirm('Bạn thực sự muốn xóa tựa sách này?');"
+                                class="btn btn-sm btn-danger">
+                            Xóa
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </table>
+}
