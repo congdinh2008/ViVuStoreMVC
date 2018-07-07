@@ -100,5 +100,12 @@ namespace BookStore.Controllers
 
             return RedirectToAction("Index");
         }
+
+        [AcceptVerbs("Get", "Post")]
+        public IActionResult CheckIfBookTitleAlreadyExists([Bind(Prefix = "Book.Title")]string title)
+        {
+            var book = _bookRepository.GetBooks().FirstOrDefault(b => b.Title == title);
+            return book == null ? Json(true) : Json("Tựa sách này đã có sẵn");
+        }
     }
 }
