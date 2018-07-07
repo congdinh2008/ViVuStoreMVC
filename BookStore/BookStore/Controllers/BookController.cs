@@ -28,7 +28,7 @@ namespace BookStore.Controllers
             if (string.IsNullOrEmpty(category))
             {
                 books = _bookRepository.GetBooks().OrderBy(b => b.Title);
-                currentCategory = "All books";
+                currentCategory = "Tất Cả Sách";
             }
             else
             {

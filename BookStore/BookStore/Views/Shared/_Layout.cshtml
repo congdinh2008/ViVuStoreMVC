@@ -34,6 +34,7 @@
 
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav mr-auto">
+                @await Component.InvokeAsync("CategoryMenu")
                 <li class="nav-item">
                     <a class="nav-link" asp-area="" asp-controller="Home"
                        asp-action="About">Giới Thiệu</a>
