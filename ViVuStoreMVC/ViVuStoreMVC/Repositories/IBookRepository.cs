@@ -6,11 +6,8 @@ namespace ViVuStoreMVC.Repositories
 {
     public interface IBookRepository
     {
+        IEnumerable<Book> Books { get; }
+        IEnumerable<Book> BooksOfTheWeek { get; }
         Book GetBookById(Guid bookId);
-        IEnumerable<Book> GetBooks();
-        IEnumerable<Book> GetBooksByAuthor(Guid authorId);
-        IEnumerable<Book> GetBooksByCategory(Guid categoryId);
-        IEnumerable<Book> GetBooksByPublisher(Guid publisherId);
-        IEnumerable<Book> GetBooksOfTheWeek();
     }
 }

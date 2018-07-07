@@ -409,6 +409,30 @@ namespace ViVuStoreMVC.Data
                     Author = authors.Single(a=>a.Name==("Eiichiro Oda")),
                     Category = categories.Single(c=>c.Name==("Truyện Tranh, Manga, Comic"))
                 },
+                //new Book() {
+                //    Title = "One Piece - Tập 6",
+                //    Description = "One Piece - Tập 6 - One Piece (Vua hải tặc) bộ thuộc thể loại truyện tranh Hành động kể về một cậu bé tên Monkey D. Luffy, giong buồm ra khơi trên chuyến hành trình tìm kho báu huyền thoại One Piece và trở thành Vua hải tặc. Để làm được điều này, cậu phải đến được tận cùng của vùng biển nguy hiểm và chết chóc nhất thế giới: Grand Line (Đại Hải Trình). Luffy đội trên đầu chiếc mũ rơm như một nhân chứng lịch sử vì chiếc mũ rơm đó đã từng thuộc về hải tặc hùng mạnh: Hải tặc vương Gol. D. Roger và tứ hoàng Shank \"tóc đỏ\". Luffy lãnh đạo nhóm hải tặc Mũ Rơm qua East Blue (Biển Đông) và rồi tiến đến Grand Line. Cậu theo dấu chân của vị vua hải tặc quá cố, Gol. D. Roger, chu du từ đảo này sang đảo khác để đến với kho báu vĩ đại.",
+                //    ImageThumbnailUrl = "https://vcdn.tikicdn.com/media/bookpreview/c1/0e/449399/files/OEBPS/Images/img693.gif",
+                //    TotalPages = 191,
+                //    Price = 17000M,
+                //    ReleaseDate = new DateTimeOffset(2015,09,26,0,0,0, new TimeSpan()),
+                //    BookDimensions = "11.3 x 17.6 cm",
+                //    Publisher = publishers.Single(p=>p.Name==("Nhà xuất bản Kim Đồng")),
+                //    Author = authors.Single(a=>a.Name==("Eiichiro Oda")),
+                //    Category = categories.Single(c=>c.Name==("Truyện Tranh, Manga, Comic"))
+                //},
+                //new Book() {
+                //    Title = "One Piece - Tập 7",
+                //    Description = "One Piece - Tập 7 - One Piece (Vua hải tặc) bộ thuộc thể loại truyện tranh Hành động kể về một cậu bé tên Monkey D. Luffy, giong buồm ra khơi trên chuyến hành trình tìm kho báu huyền thoại One Piece và trở thành Vua hải tặc. Để làm được điều này, cậu phải đến được tận cùng của vùng biển nguy hiểm và chết chóc nhất thế giới: Grand Line (Đại Hải Trình). Luffy đội trên đầu chiếc mũ rơm như một nhân chứng lịch sử vì chiếc mũ rơm đó đã từng thuộc về hải tặc hùng mạnh: Hải tặc vương Gol. D. Roger và tứ hoàng Shank \"tóc đỏ\". Luffy lãnh đạo nhóm hải tặc Mũ Rơm qua East Blue (Biển Đông) và rồi tiến đến Grand Line. Cậu theo dấu chân của vị vua hải tặc quá cố, Gol. D. Roger, chu du từ đảo này sang đảo khác để đến với kho báu vĩ đại.",
+                //    ImageThumbnailUrl = "https://vcdn.tikicdn.com/cache/550x550/media/catalog/product/o/n/one-piece-tap-7.jpg",
+                //    TotalPages = 192,
+                //    Price = 17000M,
+                //    ReleaseDate = new DateTimeOffset(2015,09,26,0,0,0, new TimeSpan()),
+                //    BookDimensions = "11.3 x 17.6 cm",
+                //    Publisher = publishers.Single(p=>p.Name==("Nhà xuất bản Kim Đồng")),
+                //    Author = authors.Single(a=>a.Name==("Eiichiro Oda")),
+                //    Category = categories.Single(c=>c.Name==("Truyện Tranh, Manga, Comic"))
+                //},
 
                 //Fujiko.F.Fujio
                 new Book()
@@ -475,6 +499,32 @@ namespace ViVuStoreMVC.Data
                     TotalPages = 655,
                     Price = 130000M,
                     ReleaseDate = new DateTimeOffset(2018,04,25,0,0,0, new TimeSpan()),
+                    BookDimensions = "14.5 x 20.5 cm",
+                    IsBookOfTheWeek = true,
+                    InStock = true,
+                    Publisher = publishers.Single(p=>p.Name==("Nhà xuất bản Kim Đồng")),
+                    Author = authors.Single(a=>a.Name==("Fujiko.F.Fujio")),
+                    Category = categories.Single(c=>c.Name==("Truyện Tranh, Manga, Comic"))
+                },
+                //new Book() {
+                //    Title = "Doraemon - Truyện Ngắn Tập 1",
+                //    Description = "Doraemon - Truyện Ngắn Tập 1",
+                //    ImageThumbnailUrl = "https://vcdn.tikicdn.com/cache/550x550/media/catalog/product/d/o/doraemon-tap-1.jpg",
+                //    TotalPages = 190,
+                //    Price = 14000M,
+                //    ReleaseDate = new DateTimeOffset(2014,02,25,0,0,0, new TimeSpan()),
+                //    BookDimensions = "11.3 x 17.6 cm",
+                //    Publisher = publishers.Single(p=>p.Name==("Nhà xuất bản Kim Đồng")),
+                //    Author = authors.Single(a=>a.Name==("Fujiko.F.Fujio")),
+                //    Category = categories.Single(c=>c.Name==("Truyện Tranh, Manga, Comic"))
+                //},
+                new Book() {
+                    Title = "Đại Tuyển Tập - Doraemon Truyện Dài - Tập 1",
+                    Description = "Fujiko F. Fujio Đại Tuyển Tập - Doraemon Truyện Dài - Tập 1 - Cũng giống như bộ truyện ngắn, đây là bộ tuyển tập gồm những chuyến phiêu lưu của Doraemon, Nobita và các bạn đến những vùng đất mới, vốn đã rất quen thuộc với độc giả nhiều thế hệ: Tới vương quốc trên mây, nước Nhật thời nguyên thủy, Khai phá vũ trụ, hành tinh muông thú... Với độ dày hơn 600 trang cho một cuốn, đi kèm tập hợp những trang bản thảo màu và tâm sự của tác giả Fujiko, Tuyển tập truyện dài sẽ là một ấn phẩm đặc biệt nữa về Doraemon dành cho những độc giả muốn sưu tập lại những câu chuyện đầy hấp dẫn và lôi cuốn, với những bài học sâu sắc và ý nghĩa còn mãi với tuổi thơ. ",
+                    ImageThumbnailUrl = "https://vcdn.tikicdn.com/cache/550x550/media/catalog/product/d/o/doraemon-dai-tuyen-tap---truyen-dai-t1.u4972.d20170531.t164902.633493.jpg",
+                    TotalPages = 625,
+                    Price = 169000M,
+                    ReleaseDate = new DateTimeOffset(2017,05,25,0,0,0, new TimeSpan()),
                     BookDimensions = "14.5 x 20.5 cm",
                     IsBookOfTheWeek = true,
                     InStock = true,

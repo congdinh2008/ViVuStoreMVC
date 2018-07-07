@@ -51,7 +51,6 @@ namespace ViVuStoreMVC
             services.AddScoped<ShoppingCart>(sp => ShoppingCart.GetCart(sp));
 
             services.AddTransient<IOrderRepository, OrderRepository>();
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 

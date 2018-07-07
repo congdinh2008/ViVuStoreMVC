@@ -6,15 +6,16 @@ namespace ViVuStoreMVC.Components
 {
     public class CategoryMenu : ViewComponent
     {
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly ICategoryRepository _categoryRepository;
 
-        public CategoryMenu(IUnitOfWork unitOfWork)
+        public CategoryMenu(ICategoryRepository categoryRepository)
         {
-            _unitOfWork = unitOfWork;
+            _categoryRepository = categoryRepository;
         }
+
         public IViewComponentResult Invoke()
         {
-            var categories = _unitOfWork.Categories.GetCategories()
+            var categories = _categoryRepository.Categories
                 .OrderBy(c => c.Name);
 
             return View(categories);
