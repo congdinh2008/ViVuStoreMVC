@@ -1,4 +1,5 @@
 ﻿using BookStore.Data;
+using BookStore.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -21,6 +22,9 @@ namespace BookStore
         {
             services.AddDbContext<BookStoreDbContext>(options
                 => options.UseSqlServer(Configuration.GetConnectionString("BookStoreDb")));
+
+            services.AddTransient<IBookRepository, BookRepository>();
+            services.AddTransient<ICategoryRepository, CategoryRepository>();
 
             services.AddMvc();
         }
