@@ -27,16 +27,16 @@ namespace ViVuStoreMVC.Controllers
 
             if (string.IsNullOrEmpty(category))
             {
-                books = _bookRepository.Books.OrderBy(b => b.Id);
+                books = _bookRepository.GetBooks().OrderBy(b => b.Id);
                 currentCategory = "All books";
             }
             else
             {
-                books = _bookRepository.Books
+                books = _bookRepository.GetBooks()
                     .Where(b => b.Category.Name == category)
                     .OrderBy(b => b.Id);
 
-                currentCategory = _categoryRepository.Categories
+                currentCategory = _categoryRepository.GetCategories()
                     .FirstOrDefault(c => c.Name == category).Name;
             }
 

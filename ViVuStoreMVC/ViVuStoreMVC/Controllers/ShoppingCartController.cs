@@ -37,7 +37,7 @@ namespace ViVuStoreMVC.Controllers
 
         public RedirectToActionResult AddToShoppingCart(Guid bookId)
         {
-            var selectedBook = _bookRepository.Books
+            var selectedBook = _bookRepository.GetBooks()
                 .FirstOrDefault(b => b.Id == bookId);
 
             if (selectedBook != null)
@@ -48,7 +48,7 @@ namespace ViVuStoreMVC.Controllers
 
         public RedirectToActionResult RemoveFromShoppingCart(Guid bookId)
         {
-            var selectedBook = _bookRepository.Books
+            var selectedBook = _bookRepository.GetBooks()
                 .FirstOrDefault(b => b.Id == bookId);
 
             if (selectedBook != null)

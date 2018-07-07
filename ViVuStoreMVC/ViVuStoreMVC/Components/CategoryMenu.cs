@@ -15,7 +15,7 @@ namespace ViVuStoreMVC.Components
 
         public IViewComponentResult Invoke()
         {
-            var categories = _categoryRepository.Categories
+            var categories = _categoryRepository.GetCategories()
                 .OrderBy(c => c.Name);
 
             return View(categories);

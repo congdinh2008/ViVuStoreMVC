@@ -5,18 +5,18 @@ using ViVuStoreMVC.Models;
 
 namespace ViVuStoreMVC.Repositories
 {
-    public class CategoryRepository : ICategoryRepository
+    public class AuthorRepository : IAuthorRepository
     {
         private readonly ViVuStoreDbContext _context;
 
-        public CategoryRepository(ViVuStoreDbContext context)
+        public AuthorRepository(ViVuStoreDbContext context)
         {
             _context = context;
         }
 
-        public IEnumerable<Category> GetCategories()
+        public IEnumerable<Author> GetAuthors()
         {
-            return _context.Categories.ToList();
+            return _context.Authors.ToList();
         }
     }
 }

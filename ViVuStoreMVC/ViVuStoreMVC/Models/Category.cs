@@ -18,7 +18,6 @@ namespace ViVuStoreMVC.Models
         [MaxLength(500)]
         public string Description { get; set; }
 
-        public ICollection<Book> Books { get; set; }
-            = new List<Book>();
+        public List<Book> Books { get; set; }
     }
 }

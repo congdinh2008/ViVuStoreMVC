@@ -21,7 +21,7 @@ namespace ViVuStoreMVC.Models
         [Required]
         public string ImageThumbnailUrl { get; set; }
 
-        public int TotalPages { get; set; }
+        public int NumberOfPages { get; set; }
 
         public decimal Price { get; set; }
 
@@ -31,21 +31,21 @@ namespace ViVuStoreMVC.Models
 
         public bool IsBookOfTheWeek { get; set; }
 
-        public bool InStock { get; set; }
-
-        public Guid PublisherId { get; set; }
-
-        [ForeignKey("PublisherId")]
-        public Publisher Publisher { get; set; }
-
-        public Guid AuthorId { get; set; }
-
-        [ForeignKey("AuthorId")]
-        public Author Author { get; set; }
+        public int Quantity { get; set; }
 
         public Guid CategoryId { get; set; }
 
         [ForeignKey("CategoryId")]
-        public Category Category { get; set; }
+        public virtual Category Category { get; set; }
+
+        public Guid AuthorId { get; set; }
+
+        [ForeignKey("AuthorId")]
+        public virtual Author Author { get; set; }
+
+        public Guid PublisherId { get; set; }
+
+        [ForeignKey("PublisherId")]
+        public virtual Publisher Publisher { get; set; }
     }
 }
