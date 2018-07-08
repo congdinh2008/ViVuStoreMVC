@@ -1,9 +1,11 @@
-﻿using BookStore.Data;
+﻿using BookStore.Auth;
+using BookStore.Data;
 using BookStore.Models;
 using BookStore.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -24,6 +26,11 @@ namespace BookStore
         {
             services.AddDbContext<BookStoreDbContext>(options
                 => options.UseSqlServer(Configuration.GetConnectionString("BookStoreDb")));
+
+            services.AddIdentity<ApplicationUser, ApplicationRole>()
+                .AddEntityFrameworkStores<BookStoreDbContext>()
+                .AddDefaultUI()
+                .AddDefaultTokenProviders();
 
             services.AddTransient<IBookRepository, BookRepository>();
             services.AddTransient<ICategoryRepository, CategoryRepository>();
@@ -61,6 +68,8 @@ namespace BookStore
             app.UseStatusCodePages();
             app.UseStaticFiles();
             app.UseSession();
+
+            app.UseAuthentication();
 
             app.UseMvc(routes =>
             {
