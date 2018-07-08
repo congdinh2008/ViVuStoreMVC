@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Encodings.Web;
 
 namespace BookStore.Controllers
 {
@@ -12,12 +13,19 @@ namespace BookStore.Controllers
     {
         private readonly IBookRepository _bookRepository;
         private readonly ICategoryRepository _categoryRepository;
+        private readonly IBookReviewRepository _bookReviewRepository;
+        private readonly HtmlEncoder _htmlEncoder;
 
-        public BookController(IBookRepository bookRepository,
-            ICategoryRepository categoryRepository)
+        public BookController(
+            IBookRepository bookRepository,
+            ICategoryRepository categoryRepository,
+            IBookReviewRepository bookReviewRepository,
+            HtmlEncoder htmlEncoder)
         {
             _bookRepository = bookRepository;
             _categoryRepository = categoryRepository;
+            _bookReviewRepository = bookReviewRepository;
+            _htmlEncoder = htmlEncoder;
         }
 
         public IActionResult List(string category)
@@ -53,7 +61,35 @@ namespace BookStore.Controllers
             if (book == null)
                 return NotFound();
 
-            return View(book);
+            book.BookReviews = _bookReviewRepository.GetBookReviewsForBook(id).ToList();
+            return View(new BookDetailViewModel()
+            {
+                Book = book,
+            });
+        }
+
+        [HttpPost]
+        public IActionResult Details(Guid id, string review)
+        {
+            var book = _bookRepository.GetBookById(id);
+            if (book == null)
+                return NotFound();
+
+            string encodeReview = _htmlEncoder.Encode(review);
+
+            _bookReviewRepository.AddBookReview(
+                new BookReview()
+                {
+                    Book = book,
+                    Review = encodeReview
+                });
+
+            var bookDetailViewModel = new BookDetailViewModel()
+            {
+                Book = book
+            };
+
+            return RedirectToAction("Details");
         }
     }
 }
