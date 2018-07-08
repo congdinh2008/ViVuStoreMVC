@@ -2,11 +2,24 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
+    <UserSecretsId>7b2719f6-9932-4c3c-8eb6-db8571f9207c</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Areas\Identity\Pages\Account\Manage\**" />
+    <Content Remove="Areas\Identity\Pages\Account\Manage\**" />
+    <EmbeddedResource Remove="Areas\Identity\Pages\Account\Manage\**" />
+    <None Remove="Areas\Identity\Pages\Account\Manage\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Areas\Identity\Pages\Account\ExternalLogin.cshtml.cs" />
     <Compile Remove="Migrations\20180708041618_ChangeTypeOfIdentityUserClaimToString.cs" />
     <Compile Remove="Migrations\20180708041618_ChangeTypeOfIdentityUserClaimToString.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Areas\Identity\Pages\Account\ExternalLogin.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
