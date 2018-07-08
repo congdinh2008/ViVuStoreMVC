@@ -1,0 +1,15 @@
+﻿@model IEnumerable<BookStore.Components.AdminMenuItem>
+
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown"
+       aria-haspopup="true" aria-expanded="false"
+       asp-controller="Admin" asp-action="Index">
+        Quản Lý<b class="caret"></b>
+    </a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        @foreach (var menuItem in Model)
+        {
+            <a class="dropdown-item" asp-controller="Admin" asp-action=@menuItem.ActionValue>@menuItem.DisplayValue</a>
+        }
+    </div>
+</li>

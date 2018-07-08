@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using BookStore.Auth
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -36,26 +39,32 @@
             <ul class="navbar-nav mr-auto">
                 @await Component.InvokeAsync("CategoryMenu")
 
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle"
-                       id="dropdown01" data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false"
-                       asp-controller="BookManagement" asp-action="Index">
-                        Quản Lý Sản Phẩm
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="dropdown01">
-                        <a class="dropdown-item"
-                           asp-controller="BookManagement"
-                           asp-action="Index">
-                            Tổng Quan
+                @if (SignInManager.IsSignedIn(User) &&
+                   User.IsInRole("Administrators"))
+                {
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle"
+                           id="dropdown01" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false"
+                           asp-controller="BookManagement" asp-action="Index">
+                            Quản Lý Sản Phẩm
                         </a>
-                        <a class="dropdown-item"
-                           asp-controller="BookManagement"
-                           asp-action="AddBook">
-                            Thêm Sách
-                        </a>
-                    </div>
-                </li>
+                        <div class="dropdown-menu" aria-labelledby="dropdown01">
+                            <a class="dropdown-item"
+                               asp-controller="BookManagement"
+                               asp-action="Index">
+                                Tổng Quan
+                            </a>
+                            <a class="dropdown-item"
+                               asp-controller="BookManagement"
+                               asp-action="AddBook">
+                                Thêm Sách
+                            </a>
+                        </div>
+                    </li>
+
+                    @await Component.InvokeAsync("AdminMenu")
+                }
 
                 <li class="nav-item">
                     <a class="nav-link" asp-area="" asp-controller="Home"

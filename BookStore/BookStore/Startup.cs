@@ -43,6 +43,15 @@ namespace BookStore
 
             services.AddMvc();
 
+            //Claims-based
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("AdministratorOnly", policy => policy.RequireRole("Administrator"));
+                options.AddPolicy("DeleteBook", policy => policy.RequireClaim("Delete Book", "Delete Book"));
+                options.AddPolicy("AddBook", policy => policy.RequireClaim("Add Book", "Add Book"));
+                options.AddPolicy("MinimumOrderAge", policy => policy.Requirements.Add(new MinimumOrderAgeRequirement(13)));
+            });
+
             services.AddMemoryCache();
             services.AddSession();
         }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace BookStore.Auth
@@ -36,6 +37,11 @@ namespace BookStore.Auth
         [DataType(DataType.Date)]
         [Display(Name = "Sinh Nhật")]
         public DateTimeOffset DateOfBirth { get; set; }
+
+        /// <summary>
+        /// Navigation property for the claims this user possesses.
+        /// </summary>
+        public virtual ICollection<IdentityUserClaim<Guid>> Claims { get; } = new List<IdentityUserClaim<Guid>>();
     }
 
     public enum Sex

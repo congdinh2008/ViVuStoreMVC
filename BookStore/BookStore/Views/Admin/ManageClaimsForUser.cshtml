@@ -1,0 +1,14 @@
+﻿@model ClaimsManagementViewModel
+
+<h2>Quản Lý Quyền Của Tài Khoản</h2>
+
+<form asp-controller="Admin" asp-action="ManageClaimsForUser">
+    <input type="hidden" name="userId" value="@Model.UserId" />
+    <select asp-for="ClaimId"
+            asp-items="@(new SelectList(Model.AllClaimsList))">
+        <option>Chọn quyền</option>
+    </select>
+    <input class="btn btn-primary" value="Thêm Quyền Cho Tài Khoản" type="submit" />
+</form>
+
+<a asp-action="UserManagement" class="btn btn-primary">Xong</a>

@@ -1,0 +1,47 @@
+﻿@using Microsoft.AspNetCore.Identity.EntityFrameworkCore
+@model IEnumerable<BookStore.Auth.ApplicationUser>
+
+<h2>Quản lý tài khoản nhân viên</h2>
+<hr />
+
+@if (!Model.Any())
+{
+    <tr><td colspan="3" class="text-center">Không có tài khoản nào</td></tr>
+}
+else
+{
+    <table class="table table-condensed table-bordered">
+        <tr>
+            <th>ID</th>
+            <th>Họ tên</th>
+            <th>Giới tính</th>
+            <th>Sinh Nhật</th>
+            <th>Thành Phố</th>
+            <th>Email</th>
+            <th>Quản Lý</th>
+        </tr>
+
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.Id</td>
+                <td>@user.Name</td>
+                <td>@user.Sex</td>
+                <td>@user.DateOfBirth.Date.ToShortDateString()</td>
+                <td>@user.City</td>
+                <td>@user.Email</td>
+                <td>
+                    <form asp-action="DeleteUser" asp-route-id="@user.Id" method="post">
+                        <a class="btn btn-sm btn-primary" asp-action="EditUser"
+                           asp-route-id="@user.Id">Sửa</a>
+                        <button type="submit" onclick="return confirm('Bạn thực sự muốn xóa tài khoản này?');" class="btn btn-sm btn-danger">
+                            Xóa
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </table>
+}
+
+<a class="btn btn-primary" asp-action="AddUser">Thêm tài khoản nhân viên</a>

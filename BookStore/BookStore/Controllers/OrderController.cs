@@ -1,5 +1,6 @@
 ﻿using BookStore.Models;
 using BookStore.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookStore.Controllers
@@ -16,12 +17,15 @@ namespace BookStore.Controllers
             _shoppingCart = shoppingCart;
         }
 
+        [Authorize]
         public IActionResult Checkout()
         {
             return View();
         }
 
         [HttpPost]
+        [Authorize]
+        [Authorize(Policy = "MinimumOrderAge")]
         public IActionResult Checkout(Order order)
         {
             var items = _shoppingCart.GetShoppingCartItems();

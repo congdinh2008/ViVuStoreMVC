@@ -1,5 +1,6 @@
 ﻿using BookStore.Repositories;
 using BookStore.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
@@ -7,6 +8,8 @@ using System.Linq;
 
 namespace BookStore.Controllers
 {
+    [Authorize(Roles = "Administrators")]
+    [Authorize(Policy = "DeleteBook")]
     public class BookManagementController : Controller
     {
         private readonly IBookRepository _bookRepository;
