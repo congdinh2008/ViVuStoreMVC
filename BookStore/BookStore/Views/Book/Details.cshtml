@@ -1,26 +1,28 @@
-﻿@model Book
+﻿@using System.Net
+@using System.Threading.Tasks
+@model BookDetailViewModel
 
 @{
-    ViewData["Title"] = $"{Model.Title} | ViVuStore.vn";
+    ViewData["Title"] = $"{Model.Book.Title} | ViVuStore.vn";
 }
 
 <div class="container product-container">
     <div class="row product-summary">
         <div class="col-md-4">
             <div class="product-image">
-                <img class="img-fluid img-thumbnail" src="@Model.ImageThumbnailUrl"
-                     alt="@Model.Title" />
+                <img class="img-fluid img-thumbnail" src="@Model.Book.ImageThumbnailUrl"
+                     alt="@Model.Book.Title" />
             </div>
         </div>
         <div class="col-md-8">
             <div class="product-cart">
-                <h2>@Model.Title</h2>
+                <h2>@Model.Book.Title</h2>
                 <h4>
-                    @Model.Price.ToString("C0", CultureInfo.CreateSpecificCulture("vi-VN"))
+                    @Model.Book.Price.ToString("C0", CultureInfo.CreateSpecificCulture("vi-VN"))
                 </h4>
                 <p class="button">
                     <a class="btn btn-primary" asp-controller="ShoppingCart"
-                       asp-action="AddToShoppingCart" asp-route-bookId="@Model.Id">
+                       asp-action="AddToShoppingCart" asp-route-bookId="@Model.Book.Id">
                         <span class="fas fa-shopping-cart"></span> CHỌN MUA
                     </a>
                 </p>
@@ -35,26 +37,67 @@
                     <tbody>
                         <tr>
                             <td>Tựa Sách</td>
-                            <td>@Model.Title</td>
+                            <td>@Model.Book.Title</td>
                         </tr>
                         <tr>
                             <td>Số Trang</td>
-                            <td>@Model.NumberOfPages</td>
+                            <td>@Model.Book.NumberOfPages</td>
                         </tr>
                         <tr>
                             <td>Kích Thước</td>
-                            <td>@Model.BookDimensions</td>
+                            <td>@Model.Book.BookDimensions</td>
                         </tr>
                         <tr>
                             <td>Ngày Xuất Bản</td>
-                            <td>@Model.ReleaseDate.DateTime.ToShortDateString()</td>
+                            <td>@Model.Book.ReleaseDate.DateTime.ToShortDateString()</td>
                         </tr>
                     </tbody>
                 </table>
                 <h3>Giới Thiệu Sách</h3>
                 <div>
-                    <p><strong>@Model.Title</strong></p>
-                    <p class="description">@Model.Description</p>
+                    <p><strong>@Model.Book.Title</strong></p>
+                    <p class="description">@Model.Book.Description</p>
+                </div>
+                <hr />
+                <div class="question-answer-box">
+                    <div class="question-answer-title">
+                        <h3>Hỏi Đáp Về Sản Phẩm</h3>
+                    </div>
+                    <div class="question-answer-content">
+                        @foreach (var review in @Model.Book.BookReviews)
+                        {
+                            if (string.IsNullOrEmpty(review.Review))
+                            {
+                                <p>Không có phản hồi nào!</p>
+                            }
+                            else
+                            {
+                                <div>@WebUtility.HtmlDecode(review.Review) </div>
+                                <hr />
+                            }
+                        }
+                    </div>
+                    <div class="question-answer-form">
+                        <form asp-controller="Book" asp-action="Details" method="post" class="form-horizontal" role="form">
+                            <input type="hidden" asp-for="@Model.Book.Id" />
+                            <div asp-validation-summary="All" class="text-danger"></div>
+
+                            <div class="form-group">
+                                <label asp-for="Review" class="control-label"></label>
+                                <div>
+                                    <input asp-for="Review" class="form-control" />
+                                    <span asp-validation-for="Review" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div>
+                                    <input type="submit" class="btn btn-primary" value="Gửi Phản Hồi" />
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

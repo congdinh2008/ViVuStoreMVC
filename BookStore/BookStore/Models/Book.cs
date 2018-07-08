@@ -1,6 +1,7 @@
 ﻿using BookStore.Utility;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -56,5 +57,7 @@ namespace BookStore.Models
         public Guid CategoryId { get; set; }
 
         public virtual Category Category { get; set; }
+
+        public virtual List<BookReview> BookReviews { get; set; }
     }
 }
