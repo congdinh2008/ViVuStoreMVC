@@ -1,13 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using BookStore.Models;
+﻿using BookStore.Models;
 using BookStore.Repositories;
 using BookStore.ViewModels;
+using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Linq;
 
-namespace ViVuStoreMVC.Controllers
+namespace BookStore.Controllers
 {
     public class ShoppingCartController: Controller
     {

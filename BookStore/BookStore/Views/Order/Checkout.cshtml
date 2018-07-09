@@ -2,58 +2,121 @@
 
 <h3>Mời Bạn Nhập Thông Tin Đơn Hàng</h3>
 <hr />
-<form class="form-horizontal" asp-action="Checkout" method="post" role="form">
-    <div class="form-group">
-        <label asp-for="Name">Họ Tên:</label>
-        <div>
-            <input class="form-control" asp-for="Name" placeholder="Họ Tên..." />
-            <span class="text-danger" asp-validation-for="Name"></span>
-        </div>
+<div class="row">
+    <div class="col-md-8 order-md-1">
+        <h4 class="mb-3">Địa Chỉ Hóa Đơn</h4>
+        <form class="needs-validation" asp-action="Checkout" method="post" role="form">
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label asp-for="Name">Họ Tên</label>
+                    <input asp-for="Name" type="text" class="form-control" id="firstName" placeholder="" value="" required>
+                    <span class="text-danger" asp-validation-for="Name"></span>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label asp-for="Email">Email</label>
+                    <input asp-for="Email" type="email" class="form-control" id="email" placeholder="you@example.com" required>
+                    <span class="text-danger" asp-validation-for="Email"></span>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="address">Địa Chỉ</label>
+                <input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
+                <span class="text-danger" asp-validation-for="Address"></span>
+            </div>
+
+            <div class="row">
+                <div class="col-md-5 mb-3">
+                    <label asp-for="City">Thành Phố</label>
+                    <select asp-for="City" class="custom-select d-block w-100" id="city" required>
+                        <option value="">Chọn...</option>
+                        <option>Hà Nội</option>
+                        <option>Sài Gòn</option>
+                    </select>
+                    <span class="text-danger" asp-validation-for="City"></span>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label asp-for="District">Quận/Huyện</label>
+                    <select asp-for="District" class="custom-select d-block w-100" id="district" required>
+                        <option value="">Chọn...</option>
+                        <option>Bắc Từ Liêm</option>
+                    </select>
+                    <span class="text-danger" asp-validation-for="District"></span>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label asp-for="Ward">Phường/Xã</label>
+                    <select asp-for="Ward" class="custom-select d-block w-100" id="ward" required>
+                        <option value="">Chọn...</option>
+                        <option>Cổ Nhuế</option>
+                    </select>
+                    <span class="text-danger" asp-validation-for="Ward"></span>
+                </div>
+            </div>
+            <hr class="mb-4">
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="same-address">
+                <label class="custom-control-label" for="same-address">Địa chỉ nhận hàng trùng với địa chỉ trên hóa đơn</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="save-info">
+                <label class="custom-control-label" for="save-info">Lưu thông tin cho lần sau</label>
+            </div>
+            <hr class="mb-4">
+
+            <h4 class="mb-3">Phương Thức Thanh Toán</h4>
+
+            <div class="d-block my-3">
+                <div class="custom-control custom-radio">
+                    <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked required>
+                    <label class="custom-control-label" for="credit">Credit card</label>
+                </div>
+                <div class="custom-control custom-radio">
+                    <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required>
+                    <label class="custom-control-label" for="debit">Debit card</label>
+                </div>
+                <div class="custom-control custom-radio">
+                    <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required>
+                    <label class="custom-control-label" for="paypal">PayPal</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="cc-name">Tên Trên Thẻ</label>
+                    <input type="text" class="form-control" id="cc-name" placeholder="" required>
+                    <small class="text-muted">Tên đầy đủ trên thẻ</small>
+                    <div class="invalid-feedback">
+                        Vui lòng nhập đầy đủ họ tên
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="cc-number">Số Thẻ</label>
+                    <input type="text" class="form-control" id="cc-number" placeholder="" required>
+                    <div class="invalid-feedback">
+                        Vui lòng nhập số thẻ
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 mb-3">
+                    <label for="cc-expiration">Thời Hạn Thẻ</label>
+                    <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
+                    <div class="invalid-feedback">
+                        Vui lòng nhập thời gian hết hạn thẻ
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="cc-cvv">CVV</label>
+                    <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
+                    <div class="invalid-feedback">
+                        Vui lòng nhập mã CVV
+                    </div>
+                </div>
+            </div>
+            <hr class="mb-4">
+            <button class="btn btn-primary btn-lg btn-block" type="submit">Xác Nhận Đặt Hàng</button>
+        </form>
     </div>
-    <div class="form-group">
-        <label asp-for="City">Thành Phố:</label>
-        <div>
-            <input class="form-control" asp-for="City" placeholder="Thành Phố..." />
-            <span class="text-danger" asp-validation-for="City"></span>
-        </div>
-    </div>
-    <div class="form-group">
-        <label asp-for="District">Quận/Huyện:</label>
-        <div>
-            <input class="form-control" asp-for="District" placeholder="Quận/Huyện..." />
-            <span class="text-danger" asp-validation-for="District"></span>
-        </div>
-    </div>
-    <div class="form-group">
-        <label asp-for="Ward">Phường/Xã:</label>
-        <div>
-            <input class="form-control" asp-for="Ward" placeholder="Phường/Xã..." />
-            <span class="text-danger" asp-validation-for="Ward"></span>
-        </div>
-    </div>
-    <div class="form-group">
-        <label asp-for="Address">Địa Chỉ:</label>
-        <div>
-            <input class="form-control" asp-for="Address" placeholder="Địa Chỉ..." />
-            <span class="text-danger" asp-validation-for="Address"></span>
-        </div>
-    </div>
-    <div class="form-group">
-        <label asp-for="PhoneNumber">Số Điện Thoại:</label>
-        <div>
-            <input class="form-control" asp-for="PhoneNumber" placeholder="Số Điện Thoại..." />
-            <span class="text-danger" asp-validation-for="PhoneNumber"></span>
-        </div>
-    </div>
-    <div class="form-group">
-        <label asp-for="Email">Email:</label>
-        <div>
-            <input class="form-control" asp-for="Email" placeholder="Email của bạn..." />
-            <span class="text-danger" asp-validation-for="Email"></span>
-        </div>
-    </div>
-    <input type="submit" class="btn btn-primary" value="Xác Nhận Đặt Hàng" />
-</form>
+</div>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
