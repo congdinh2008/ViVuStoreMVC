@@ -55,6 +55,31 @@ namespace BookStore.Controllers
             });
         }
 
+        public IActionResult ListByPrice(decimal priceLevel)
+        {
+            IEnumerable<Book> books;
+            decimal currentPrice = decimal.Zero;
+
+            if (priceLevel<0)
+            {
+                books = _bookRepository.GetBooks().OrderBy(b => b.Title);
+                currentPrice = 0;
+            }
+            else
+            {
+                books = _bookRepository.GetBooksByPrice(priceLevel)
+                    .OrderBy(b => b.Title);
+
+                currentPrice = priceLevel;
+            }
+
+            return View(new BooksListByPriceViewModel
+            {
+                Books = books,
+                CurrentPrice = currentPrice
+            });
+        }
+
         public IActionResult Details(Guid id)
         {
             var book = _bookRepository.GetBookById(id);

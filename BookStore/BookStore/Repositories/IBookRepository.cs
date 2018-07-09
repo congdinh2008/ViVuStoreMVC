@@ -10,6 +10,7 @@ namespace BookStore.Repositories
         void DeleteBook(Book book);
         Book GetBookById(Guid bookId);
         IEnumerable<Book> GetBooks();
+        IEnumerable<Book> GetBooksByPrice(decimal priceLevel);
         IEnumerable<Book> GetBooksOfTheWeek();
         void UpdateBook(Book book);
     }

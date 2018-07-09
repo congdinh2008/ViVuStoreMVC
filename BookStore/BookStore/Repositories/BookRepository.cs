@@ -32,6 +32,12 @@ namespace BookStore.Repositories
             return _context.Books.FirstOrDefault(b => b.Id == bookId);
         }
 
+        public IEnumerable<Book> GetBooksByPrice(decimal priceLevel)
+        {
+            return _context.Books.Include(c => c.Category)
+                .Where(b => b.Price < priceLevel).ToList();
+        }
+
         public void AddBook(Book book)
         {
             _context.Books.Add(book);
