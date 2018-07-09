@@ -56,7 +56,18 @@ namespace BookStore.Models
 
         public Guid CategoryId { get; set; }
 
+        [ForeignKey("CategoryId")]
         public virtual Category Category { get; set; }
+
+        public Guid AuthorId { get; set; }
+
+        [ForeignKey("AuthorId")]
+        public virtual Author Author { get; set; }
+
+        public Guid PublisherId { get; set; }
+
+        [ForeignKey("PublisherId")]
+        public virtual Publisher Publisher { get; set; }
 
         public virtual List<BookReview> BookReviews { get; set; }
     }

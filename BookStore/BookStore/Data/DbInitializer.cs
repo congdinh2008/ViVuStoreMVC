@@ -41,6 +41,66 @@ namespace BookStore.Data
             }
             context.SaveChanges();
 
+            var publishers = new Publisher[]
+            {
+                new Publisher()
+                {
+                    Name = "Nhà xuất bản Trẻ",
+                    Description = "Dù chiếm một phần không nhỏ trong các đầu sách của nhà xuất bản Trẻ là sách kiến thức phổ thông, thường thức đời sống, mảng sách hư cấu (sách dịch lẫn sách trong nước) mới có những ấn phẩm để lại dấu ấn. Nhà xuất bản Trẻ cũng là bệ phóng cho những tên tuổi văn học Việt Nam đương đại như Nguyễn Nhật Ánh hay Nguyễn Ngọc Tư; hoặc giới thiệu nhiều tác giả nổi tiếng trên thế giới đến Việt Nam như Mario Puzo (Bố già), Paul Auster, Thomas Mann (qua Tủ sách Cánh cửa mở rộng), J. K. Rowling (qua bộ sách Harry Potter)...",
+                },
+                new Publisher()
+                {
+                    Name = "Nhà xuất bản Kim Đồng",
+                    Description = "Nhà xuất bản Kim Đồng là nhà xuất bản chuyên sản xuất và phát hành sách, văn hóa phẩm dành cho trẻ em lớn nhất tại Việt Nam với hơn 1.000 đầu sách mỗi năm thuộc nhiều thể loại như văn học, lịch sử, khoa học, truyện tranh,... Bên cạnh việc hợp tác với các cá nhân vá tổ chức trong nước, Nhà xuất bản Kim Đồng còn hợp tác với hơn 70 nhà xuất bản khác trên khắp thế giới, đặc biệt các nhà xuất bản như Dorling Kindersley, HarperCollins UK, Simon and Schuster UK, Dami International, Shogakukan, Nhà xuất bản Seoul,...",
+                },
+                new Publisher()
+                {
+                    Name = "First News - Trí Việt",
+                    Description = "First News là thương hiệu quốc tế của Công ty Văn hóa Sáng tạo Trí Việt, là một trong những thương hiệu xuất bản uy tín và được bạn đọc yêu thích nhất tại Việt Nam. Ra đời từ năm 1994, First News đã trải qua 20 năm kinh nghiệm trong lĩnh vực xuất bản sách, với trên 2.000 cuốn sách giá trị ra mắt bạn đọc trên tất cả các lĩnh vực khác nhau, trong đó có 90% các đầu sách được chuyển ngữ từ các tác giả nổi tiếng trên thế giới. Đây là một trong những đơn vị sớm nhất ký và tuân thủ Công ước Berne năm 2003.",
+                }
+            };
+
+            foreach (Publisher publisher in publishers)
+            {
+                context.Publishers.Add(publisher);
+            }
+            context.SaveChanges();
+
+            var authors = new Author[]
+            {
+                new Author()
+                {
+                    Name = "J. K. Rowling",
+                    Description = "Joanne \"Jo\" Rowling, sinh ngày 31 tháng 7 năm 1965, bút danh là J. K. Rowling, và Robert Galbraith. Cư ngụ tại thủ đô Edinburgh,Scotland là tiểu thuyết gia người Anh, tác giả bộ truyện giả tưởng nổi tiếng Harry Potter với bút danh J. K. Rowling.",
+                },
+                new Author()
+                {
+                    Name = "Dale Carnegie",
+                    Description = "Dale Breckenridge Carnegie(24 tháng 11 năm 1888 – 1 tháng 11 năm 1955) là một nhà văn và nhà thuyết trình Mỹ. Ra đời trong cảnh nghèo đói tại một trang trại ở Missouri, ông là tác giả cuốn Đắc Nhân Tâm, được xuất bản lần đầu năm 1936, một cuốn sách thuộc hàng bán chạy nhất và được biết đến nhiều nhất cho đến tận ngày nay.",
+                },
+                new Author()
+                {
+                    Name = "Aoyama Gosho",
+                    Description = "Aoyama Gōshō (青山 あおやま 剛昌 ごうしょう (Thanh Sơn Cương Xương)?), tên khai sinh là Aoyama Yoshimasa (青山 あおやま 剛昌 よしまさ (Thanh Sơn Cương Xương)? - giữ nguyên Kanji nhưng thay cách đọc), sinh ngày 21 tháng 6 năm 1963 tại Hokuei tỉnh Tottori, Nhật Bản (trước đây còn được biết tới là Daiei, tỉnh Tottori). Ông là một nhà sáng tác truyện tranh, được biết đến với bộ truyện tranh Thám tử lừng danh Conan.",
+                },
+                new Author()
+                {
+                    Name = "Eiichiro Oda",
+                    Description = "Oda Eiichiro (尾田 栄一郎 Oda Eiichirō?, Vĩ Điền Vinh Nhất Lang) (sinh ngày 1 tháng 1 năm 1975 tại thành phố Kumamoto, tỉnh Kumamoto) là một họa sĩ truyện tranh người Nhật Bản, hiện đang sáng tác cho nhà xuất bản Shūeisha. Tác phẩm tiêu biểu: One Piece.",
+                },
+                new Author()
+                {
+                    Name = "Fujiko.F.Fujio",
+                    Description = "Fujiko Fujio (藤子 不二雄, ふじこ ふじお) (Đằng Tử Bất Nhị Hùng) IPA: /ɸɯdʒiko ɸɯdʒio/ là bút danh chung của hai nghệ sĩ manga Nhật Bản. Năm 1987, họ chia tay để theo đuổi con đường sáng tác riêng rẽ và trở thành \"Fujiko F. Fujio\" và \"Fujiko Fujio (A)\". Trong số các tác phẩm của cả hai, tác phẩm được biết đến rộng rãi nhất là Doraemon.",
+                }
+             };
+
+            foreach (Author author in authors)
+            {
+                context.Authors.Add(author);
+            }
+            context.SaveChanges();
+
             var books = new Book[]
             {
 #region First News - Trí Việt
@@ -56,7 +116,9 @@ namespace BookStore.Data
                     BookDimensions = "17.9 x 11.2 cm",
                     IsBookOfTheWeek = false,
                     Quantity = 52,
-                    Category = categories.Single(c=>c.Name==("Self Help"))
+                    Category = categories.Single(c=>c.Name==("Self Help")),
+                    Author = authors.Single(a=>a.Name==("Dale Carnegie")),
+                    Publisher = publishers.Single(p=>p.Name==("First News - Trí Việt"))
                 },
                 new Book()
                 {
@@ -69,7 +131,9 @@ namespace BookStore.Data
                     BookDimensions = "14.5 x 20.5 cm",
                     IsBookOfTheWeek = false,
                     Quantity = 50,
-                    Category = categories.Single(c=>c.Name==("Self Help"))
+                    Category = categories.Single(c=>c.Name==("Self Help")),
+                    Author = authors.Single(a=>a.Name==("Dale Carnegie")),
+                    Publisher = publishers.Single(p=>p.Name==("First News - Trí Việt"))
                 },
 
                 #endregion
@@ -87,7 +151,9 @@ namespace BookStore.Data
                      BookDimensions = "14.5 x 20.5 cm",
                      IsBookOfTheWeek = false,
                      Quantity = 12,
-                     Category = categories.Single(c=>c.Name==("Literature & Fiction"))
+                     Category = categories.Single(c=>c.Name==("Literature & Fiction")),
+                     Author = authors.Single(a=>a.Name==("J. K. Rowling")),
+                     Publisher = publishers.Single(p=>p.Name==("Nhà xuất bản Trẻ"))
                  },
                  new Book()
                  {
@@ -100,7 +166,9 @@ namespace BookStore.Data
                      BookDimensions = "14.5 x 20.5 cm",
                      IsBookOfTheWeek = false,
                      Quantity = 15,
-                     Category = categories.Single(c=>c.Name==("Literature & Fiction"))
+                     Category = categories.Single(c=>c.Name==("Literature & Fiction")),
+                     Author = authors.Single(a=>a.Name==("J. K. Rowling")),
+                     Publisher = publishers.Single(p=>p.Name==("Nhà xuất bản Trẻ"))
                  },
                  new Book()
                  {
@@ -113,7 +181,9 @@ namespace BookStore.Data
                      BookDimensions = "14.5 x 20.5 cm",
                      IsBookOfTheWeek = false,
                      Quantity = 21,
-                     Category = categories.Single(c=>c.Name==("Literature & Fiction"))
+                     Category = categories.Single(c=>c.Name==("Literature & Fiction")),
+                     Author = authors.Single(a=>a.Name==("J. K. Rowling")),
+                     Publisher = publishers.Single(p=>p.Name==("Nhà xuất bản Trẻ"))
                  },
                  new Book()
                  {
@@ -126,7 +196,9 @@ namespace BookStore.Data
                      BookDimensions = "14.5 x 20.5 cm",
                      IsBookOfTheWeek = false,
                      Quantity = 152,
-                     Category = categories.Single(c=>c.Name==("Literature & Fiction"))
+                     Category = categories.Single(c=>c.Name==("Literature & Fiction")),
+                     Author = authors.Single(a=>a.Name==("J. K. Rowling")),
+                     Publisher = publishers.Single(p=>p.Name==("Nhà xuất bản Trẻ"))
                  },
                  new Book()
                  {
@@ -139,7 +211,9 @@ namespace BookStore.Data
                      BookDimensions = "14.5 x 20.5 cm",
                      IsBookOfTheWeek = true,
                      Quantity = 502,
-                     Category = categories.Single(c=>c.Name==("Literature & Fiction"))
+                     Category = categories.Single(c=>c.Name==("Literature & Fiction")),
+                     Author = authors.Single(a=>a.Name==("J. K. Rowling")),
+                     Publisher = publishers.Single(p=>p.Name==("Nhà xuất bản Trẻ"))
                  },
                  new Book()
                  {
@@ -152,7 +226,9 @@ namespace BookStore.Data
                      BookDimensions = "14.5 x 20.5 cm",
                      IsBookOfTheWeek = true,
                      Quantity = 126,
-                     Category = categories.Single(c=>c.Name==("Literature & Fiction"))
+                     Category = categories.Single(c=>c.Name==("Literature & Fiction")),
+                     Author = authors.Single(a=>a.Name==("J. K. Rowling")),
+                     Publisher = publishers.Single(p=>p.Name==("Nhà xuất bản Trẻ"))
                  },
                  new Book()
                  {
@@ -165,7 +241,9 @@ namespace BookStore.Data
                      BookDimensions = "14.5 x 20.5 cm",
                      IsBookOfTheWeek = true,
                      Quantity = 29,
-                     Category = categories.Single(c=>c.Name==("Literature & Fiction"))
+                     Category = categories.Single(c=>c.Name==("Literature & Fiction")),
+                     Author = authors.Single(a=>a.Name==("J. K. Rowling")),
+                     Publisher = publishers.Single(p=>p.Name==("Nhà xuất bản Trẻ"))
                  },
                  new Book()
                  {
@@ -178,7 +256,9 @@ namespace BookStore.Data
                      BookDimensions = "15 x 3 x 22.1 cm",
                      IsBookOfTheWeek = false,
                      Quantity = 234,
-                     Category = categories.Single(c=>c.Name==("Literature & Fiction"))
+                     Category = categories.Single(c=>c.Name==("Literature & Fiction")),
+                     Author = authors.Single(a=>a.Name==("J. K. Rowling")),
+                     Publisher = publishers.Single(p=>p.Name==("Nhà xuất bản Trẻ"))
                  },
 #endregion
 
@@ -196,7 +276,9 @@ namespace BookStore.Data
                     BookDimensions = "11.3 x 17.6 cm",
                     IsBookOfTheWeek = true,
                     Quantity = 532,
-                    Category = categories.Single(c=>c.Name==("Truyện Tranh, Manga, Comic"))
+                    Category = categories.Single(c=>c.Name==("Truyện Tranh, Manga, Comic")),
+                    Author = authors.Single(a=>a.Name==("Aoyama Gosho")),
+                    Publisher = publishers.Single(p=>p.Name==("Nhà xuất bản Kim Đồng"))
                 },
                 new Book() {
                     Title = "Thám Tử Lừng Danh Conan Tập 2",
@@ -208,7 +290,9 @@ namespace BookStore.Data
                     BookDimensions = "11.3 x 17.6 cm",
                     IsBookOfTheWeek = false,
                     Quantity = 452,
-                    Category = categories.Single(c=>c.Name==("Truyện Tranh, Manga, Comic"))
+                    Category = categories.Single(c=>c.Name==("Truyện Tranh, Manga, Comic")),
+                    Author = authors.Single(a=>a.Name==("Aoyama Gosho")),
+                    Publisher = publishers.Single(p=>p.Name==("Nhà xuất bản Kim Đồng"))
                 },
                 new Book() {
                     Title = "Thám Tử Lừng Danh Conan Tập 3",
@@ -220,7 +304,9 @@ namespace BookStore.Data
                     BookDimensions = "11.3 x 17.6 cm",
                     IsBookOfTheWeek = false,
                     Quantity = 289,
-                    Category = categories.Single(c=>c.Name==("Truyện Tranh, Manga, Comic"))
+                    Category = categories.Single(c=>c.Name==("Truyện Tranh, Manga, Comic")),
+                    Author = authors.Single(a=>a.Name==("Aoyama Gosho")),
+                    Publisher = publishers.Single(p=>p.Name==("Nhà xuất bản Kim Đồng"))
                 },
                 new Book() {
                     Title = "Thám Tử Lừng Danh Conan Tập 4",
@@ -232,7 +318,9 @@ namespace BookStore.Data
                     BookDimensions = "11.3 x 17.6 cm",
                     IsBookOfTheWeek = false,
                     Quantity = 0,
-                    Category = categories.Single(c=>c.Name==("Truyện Tranh, Manga, Comic"))
+                    Category = categories.Single(c=>c.Name==("Truyện Tranh, Manga, Comic")),
+                    Author = authors.Single(a=>a.Name==("Aoyama Gosho")),
+                    Publisher = publishers.Single(p=>p.Name==("Nhà xuất bản Kim Đồng"))
                 },
                 new Book() {
                     Title = "Thám Tử Lừng Danh Conan Tập 5",
@@ -244,7 +332,9 @@ namespace BookStore.Data
                     BookDimensions = "11.3 x 17.6 cm",
                     IsBookOfTheWeek = true,
                     Quantity = 235,
-                    Category = categories.Single(c=>c.Name==("Truyện Tranh, Manga, Comic"))
+                    Category = categories.Single(c=>c.Name==("Truyện Tranh, Manga, Comic")),
+                    Author = authors.Single(a=>a.Name==("Aoyama Gosho")),
+                    Publisher = publishers.Single(p=>p.Name==("Nhà xuất bản Kim Đồng"))
                 },
 
                 // Eiichiro Oda
@@ -259,7 +349,9 @@ namespace BookStore.Data
                     BookDimensions = "11.3 x 17.6 cm",
                     IsBookOfTheWeek = true,
                     Quantity = 0,
-                    Category = categories.Single(c=>c.Name==("Truyện Tranh, Manga, Comic"))
+                    Category = categories.Single(c=>c.Name==("Truyện Tranh, Manga, Comic")),
+                    Author = authors.Single(a=>a.Name==("Eiichiro Oda")),
+                    Publisher = publishers.Single(p=>p.Name==("Nhà xuất bản Kim Đồng"))
                 },
                 new Book() {
                     Title = "One Piece - Tập 2",
@@ -271,7 +363,9 @@ namespace BookStore.Data
                     BookDimensions = "11.3 x 17.6 cm",
                     IsBookOfTheWeek = true,
                     Quantity = 99,
-                    Category = categories.Single(c=>c.Name==("Truyện Tranh, Manga, Comic"))
+                    Category = categories.Single(c=>c.Name==("Truyện Tranh, Manga, Comic")),
+                    Author = authors.Single(a=>a.Name==("Eiichiro Oda")),
+                    Publisher = publishers.Single(p=>p.Name==("Nhà xuất bản Kim Đồng"))
                 },
                 new Book() {
                     Title = "One Piece - Tập 3",
@@ -283,7 +377,9 @@ namespace BookStore.Data
                     BookDimensions = "11.3 x 17.6 cm",
                     IsBookOfTheWeek = false,
                     Quantity = 75,
-                    Category = categories.Single(c=>c.Name==("Truyện Tranh, Manga, Comic"))
+                    Category = categories.Single(c=>c.Name==("Truyện Tranh, Manga, Comic")),
+                    Author = authors.Single(a=>a.Name==("Eiichiro Oda")),
+                    Publisher = publishers.Single(p=>p.Name==("Nhà xuất bản Kim Đồng"))
                 },
                 new Book() {
                     Title = "One Piece - Tập 4",
@@ -295,7 +391,9 @@ namespace BookStore.Data
                     BookDimensions = "11.3 x 17.6 cm",
                     IsBookOfTheWeek = false,
                     Quantity = 336,
-                    Category = categories.Single(c=>c.Name==("Truyện Tranh, Manga, Comic"))
+                    Category = categories.Single(c=>c.Name==("Truyện Tranh, Manga, Comic")),
+                    Author = authors.Single(a=>a.Name==("Eiichiro Oda")),
+                    Publisher = publishers.Single(p=>p.Name==("Nhà xuất bản Kim Đồng"))
                 },
                 new Book() {
                     Title = "One Piece - Tập 5",
@@ -307,7 +405,9 @@ namespace BookStore.Data
                     BookDimensions = "11.3 x 17.6 cm",
                     IsBookOfTheWeek = true,
                     Quantity = 390,
-                    Category = categories.Single(c=>c.Name==("Truyện Tranh, Manga, Comic"))
+                    Category = categories.Single(c=>c.Name==("Truyện Tranh, Manga, Comic")),
+                    Author = authors.Single(a=>a.Name==("Eiichiro Oda")),
+                    Publisher = publishers.Single(p=>p.Name==("Nhà xuất bản Kim Đồng"))
                 },
 
                 //Fujiko.F.Fujio
@@ -322,7 +422,9 @@ namespace BookStore.Data
                     BookDimensions = "14.5 x 20.5 cm",
                     IsBookOfTheWeek = true,
                     Quantity = 66,
-                    Category = categories.Single(c=>c.Name==("Truyện Tranh, Manga, Comic"))
+                    Category = categories.Single(c=>c.Name==("Truyện Tranh, Manga, Comic")),
+                    Author = authors.Single(a=>a.Name==("Fujiko.F.Fujio")),
+                    Publisher = publishers.Single(p=>p.Name==("Nhà xuất bản Kim Đồng"))
                 },
                 new Book() {
                     Title = "Đại Tuyển Tập - Doraemon Truyện Dài - Tập 2",
@@ -334,7 +436,9 @@ namespace BookStore.Data
                     BookDimensions = "14.5 x 20.5 cm",
                     IsBookOfTheWeek = false,
                     Quantity = 25,
-                    Category = categories.Single(c=>c.Name==("Truyện Tranh, Manga, Comic"))
+                    Category = categories.Single(c=>c.Name==("Truyện Tranh, Manga, Comic")),
+                    Author = authors.Single(a=>a.Name==("Fujiko.F.Fujio")),
+                    Publisher = publishers.Single(p=>p.Name==("Nhà xuất bản Kim Đồng"))
                 },
                 new Book() {
                     Title = "Đại Tuyển Tập - Doraemon Truyện Dài - Tập 3",
@@ -346,7 +450,9 @@ namespace BookStore.Data
                     BookDimensions = "14.5 x 20.5 cm",
                     IsBookOfTheWeek = false,
                     Quantity = 116,
-                    Category = categories.Single(c=>c.Name==("Truyện Tranh, Manga, Comic"))
+                    Category = categories.Single(c=>c.Name==("Truyện Tranh, Manga, Comic")),
+                    Author = authors.Single(a=>a.Name==("Fujiko.F.Fujio")),
+                    Publisher = publishers.Single(p=>p.Name==("Nhà xuất bản Kim Đồng"))
                 },
                 new Book() {
                     Title = "Đại Tuyển Tập - Doraemon Truyện Dài - Tập 4",
@@ -358,7 +464,9 @@ namespace BookStore.Data
                     BookDimensions = "14.5 x 20.5 cm",
                     IsBookOfTheWeek = false,
                     Quantity = 86,
-                    Category = categories.Single(c=>c.Name==("Truyện Tranh, Manga, Comic"))
+                    Category = categories.Single(c=>c.Name==("Truyện Tranh, Manga, Comic")),
+                    Author = authors.Single(a=>a.Name==("Fujiko.F.Fujio")),
+                    Publisher = publishers.Single(p=>p.Name==("Nhà xuất bản Kim Đồng"))
                 },
                 new Book() {
                     Title = "Đại Tuyển Tập - Doraemon Truyện Dài - Tập 5",
@@ -370,7 +478,9 @@ namespace BookStore.Data
                     BookDimensions = "14.5 x 20.5 cm",
                     IsBookOfTheWeek = true,
                     Quantity = 54,
-                    Category = categories.Single(c=>c.Name==("Truyện Tranh, Manga, Comic"))
+                    Category = categories.Single(c=>c.Name==("Truyện Tranh, Manga, Comic")),
+                    Author = authors.Single(a=>a.Name==("Fujiko.F.Fujio")),
+                    Publisher = publishers.Single(p=>p.Name==("Nhà xuất bản Kim Đồng"))
                 },
                 new Book() {
                     Title = "Đại Tuyển Tập - Doraemon Truyện Ngắn - Tập 1 (Ấn Bản Kỉ Niệm 60 Năm NXB Kim Đồng)",
@@ -382,7 +492,9 @@ namespace BookStore.Data
                     BookDimensions = "14.5 x 20.5 cm",
                     IsBookOfTheWeek = false,
                     Quantity = 458,
-                    Category = categories.Single(c=>c.Name==("Truyện Tranh, Manga, Comic"))
+                    Category = categories.Single(c=>c.Name==("Truyện Tranh, Manga, Comic")),
+                    Author = authors.Single(a=>a.Name==("Fujiko.F.Fujio")),
+                    Publisher = publishers.Single(p=>p.Name==("Nhà xuất bản Kim Đồng"))
                 },
                 new Book() {
                     Title = "Đại Tuyển Tập - Doraemon Truyện Ngắn - Tập 2",
@@ -394,7 +506,9 @@ namespace BookStore.Data
                     BookDimensions = "14.5 x 20.5 cm",
                     IsBookOfTheWeek = false,
                     Quantity = 166,
-                    Category = categories.Single(c=>c.Name==("Truyện Tranh, Manga, Comic"))
+                    Category = categories.Single(c=>c.Name==("Truyện Tranh, Manga, Comic")),
+                    Author = authors.Single(a=>a.Name==("Fujiko.F.Fujio")),
+                    Publisher = publishers.Single(p=>p.Name==("Nhà xuất bản Kim Đồng"))
                 },
                 new Book() {
                     Title = "Đại Tuyển Tập - Doraemon Truyện Ngắn - Tập 3",
@@ -406,7 +520,9 @@ namespace BookStore.Data
                     BookDimensions = "14.5 x 20.5 cm",
                     IsBookOfTheWeek = true,
                     Quantity = 46,
-                    Category = categories.Single(c=>c.Name==("Truyện Tranh, Manga, Comic"))
+                    Category = categories.Single(c=>c.Name==("Truyện Tranh, Manga, Comic")),
+                    Author = authors.Single(a=>a.Name==("Fujiko.F.Fujio")),
+                    Publisher = publishers.Single(p=>p.Name==("Nhà xuất bản Kim Đồng"))
                 },
                 new Book() {
                     Title = "Đại Tuyển Tập - Doraemon Truyện Ngắn - Tập 4",
@@ -418,7 +534,9 @@ namespace BookStore.Data
                     BookDimensions = "14.5 x 20.5 cm",
                     IsBookOfTheWeek = true,
                     Quantity = 0,
-                    Category = categories.Single(c=>c.Name==("Truyện Tranh, Manga, Comic"))
+                    Category = categories.Single(c=>c.Name==("Truyện Tranh, Manga, Comic")),
+                    Author = authors.Single(a=>a.Name==("Fujiko.F.Fujio")),
+                    Publisher = publishers.Single(p=>p.Name==("Nhà xuất bản Kim Đồng"))
                 },
                 new Book() {
                     Title = "Đại Tuyển Tập - Doraemon Truyện Ngắn - Tập 5",
@@ -430,7 +548,9 @@ namespace BookStore.Data
                     BookDimensions = "14.5 x 20.5 cm",
                     IsBookOfTheWeek = true,
                     Quantity = 5,
-                    Category = categories.Single(c=>c.Name==("Truyện Tranh, Manga, Comic"))
+                    Category = categories.Single(c=>c.Name==("Truyện Tranh, Manga, Comic")),
+                    Author = authors.Single(a=>a.Name==("Fujiko.F.Fujio")),
+                    Publisher = publishers.Single(p=>p.Name==("Nhà xuất bản Kim Đồng"))
                 }
 #endregion
             };
@@ -438,13 +558,14 @@ namespace BookStore.Data
             foreach (Book book in books)
             {
                 var bookInDatabase = context.Books.Where(
-                    p => p.Category.Id == book.CategoryId)
+                    p =>
+                    p.Category.Id == book.CategoryId
+                    && p.Author.Id == book.AuthorId
+                    && p.Publisher.Id == p.PublisherId)
                     .SingleOrDefault();
 
                 if (bookInDatabase == null)
-                {
                     context.Books.Add(book);
-                }
             }
             context.SaveChanges();
         }

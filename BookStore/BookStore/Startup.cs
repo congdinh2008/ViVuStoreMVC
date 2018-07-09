@@ -64,6 +64,8 @@ namespace BookStore
 
             services.AddTransient<IBookRepository, BookRepository>();
             services.AddTransient<ICategoryRepository, CategoryRepository>();
+            services.AddTransient<IAuthorRepository, AuthorRepository>();
+            services.AddTransient<IPublisherRepository, PublisherRepository>();
             services.AddTransient<IBookReviewRepository, BookReviewRepository>();
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();

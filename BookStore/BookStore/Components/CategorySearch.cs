@@ -4,10 +4,10 @@ using System.Linq;
 
 namespace BookStore.Components
 {
-    public class CategorySideBar: ViewComponent
+    public class CategorySearch: ViewComponent
     {
         private readonly ICategoryRepository _categoryRepository;
-        public CategorySideBar(ICategoryRepository categoryRepository)
+        public CategorySearch(ICategoryRepository categoryRepository)
         {
             _categoryRepository = categoryRepository;
         }
