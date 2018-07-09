@@ -14,13 +14,19 @@ namespace BookStore.Controllers
     {
         private readonly IBookRepository _bookRepository;
         private readonly ICategoryRepository _categoryRepository;
+        private readonly IAuthorRepository _authorRepository;
+        private readonly IPublisherRepository _publisherRepository;
 
         public BookManagementController(
             IBookRepository bookRepository,
-            ICategoryRepository categoryRepository)
+            ICategoryRepository categoryRepository,
+            IAuthorRepository authorRepository,
+            IPublisherRepository publisherRepository)
         {
             _bookRepository = bookRepository;
             _categoryRepository = categoryRepository;
+            _authorRepository = authorRepository;
+            _publisherRepository = publisherRepository;
         }
 
         public IActionResult Index()
@@ -33,6 +39,9 @@ namespace BookStore.Controllers
         public IActionResult AddBook()
         {
             var categories = _categoryRepository.GetCategories();
+            var authors = _authorRepository.GetAuthors();
+            var publishers = _publisherRepository.GetPublishers();
+
             var bookEditViewModel = new BookEditViewModel
             {
                 Categories = categories.Select(c =>
@@ -42,6 +51,20 @@ namespace BookStore.Controllers
                     Value = c.Id.ToString()
                 }).ToList(),
                 SelectedCategoryId = categories.FirstOrDefault().Id,
+                Authors = authors.Select(a =>
+                new SelectListItem()
+                {
+                    Text = a.Name,
+                    Value = a.Id.ToString()
+                }).ToList(),
+                SelectedAuthorId = authors.FirstOrDefault().Id,
+                Publishers = publishers.Select(p =>
+                new SelectListItem()
+                {
+                    Text = p.Name,
+                    Value = p.Id.ToString()
+                }).ToList(),
+                SelectedPublisherId = publishers.FirstOrDefault().Id,
             };
             return View(bookEditViewModel);
         }
@@ -53,6 +76,8 @@ namespace BookStore.Controllers
             if (ModelState.IsValid)
             {
                 bookEditViewModel.Book.CategoryId = bookEditViewModel.SelectedCategoryId;
+                bookEditViewModel.Book.AuthorId = bookEditViewModel.SelectedAuthorId;
+                bookEditViewModel.Book.PublisherId = bookEditViewModel.SelectedPublisherId;
                 _bookRepository.AddBook(bookEditViewModel.Book);
                 return RedirectToAction("Index");
             }
@@ -62,6 +87,8 @@ namespace BookStore.Controllers
         public IActionResult EditBook(Guid bookId)
         {
             var categories = _categoryRepository.GetCategories();
+            var authors = _authorRepository.GetAuthors();
+            var publishers = _publisherRepository.GetPublishers();
 
             var book = _bookRepository.GetBookById(bookId);
 
@@ -73,8 +100,22 @@ namespace BookStore.Controllers
                     Text = c.Name,
                     Value = c.Id.ToString()
                 }).ToList(),
+                Authors = authors.Select(a =>
+                new SelectListItem()
+                {
+                    Text = a.Name,
+                    Value = a.Id.ToString()
+                }).ToList(),
+                Publishers = publishers.Select(p =>
+                new SelectListItem()
+                {
+                    Text = p.Name,
+                    Value = p.Id.ToString()
+                }).ToList(),
                 Book = book,
-                SelectedCategoryId = book.CategoryId
+                SelectedCategoryId = book.CategoryId,
+                SelectedAuthorId = book.AuthorId,
+                SelectedPublisherId = book.PublisherId
             };
 
             return View(bookEditViewModel);
@@ -84,6 +125,8 @@ namespace BookStore.Controllers
         public IActionResult EditBook(BookEditViewModel bookEditViewModel)
         {
             bookEditViewModel.Book.CategoryId = bookEditViewModel.SelectedCategoryId;
+            bookEditViewModel.Book.AuthorId = bookEditViewModel.SelectedAuthorId;
+            bookEditViewModel.Book.PublisherId = bookEditViewModel.SelectedPublisherId;
 
             if (!ModelState.IsValid)
             {

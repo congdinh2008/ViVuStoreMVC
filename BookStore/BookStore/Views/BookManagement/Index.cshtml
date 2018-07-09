@@ -20,7 +20,10 @@ else
         {
             <tr>
                 <td><img style="max-width:150px;" src="@book.ImageThumbnailUrl" alt="@book.Title" /></td>
-                <td>@book.Title</td>
+                <td>
+                    <a asp-controller="Book" asp-action="Details"
+                       asp-route-id="@book.Id">@book.Title</a>
+                </td>
                 <td>@book.Price.ToString("C0", CultureInfo.CreateSpecificCulture("vi-VN"))</td>
                 <td>
                     <form asp-action="DeleteBook"

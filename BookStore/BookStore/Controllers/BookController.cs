@@ -80,6 +80,56 @@ namespace BookStore.Controllers
             });
         }
 
+        public IActionResult ListByAuthor(string authorName)
+        {
+            IEnumerable<Book> books;
+            string currentAuthor = string.Empty;
+
+            if (string.IsNullOrEmpty(authorName))
+            {
+                books = _bookRepository.GetBooks().OrderBy(b => b.Title);
+                currentAuthor = "Tất Cả Tác Giả";
+            }
+            else
+            {
+                books = _bookRepository.GetBooksByAuthor(authorName)
+                    .OrderBy(b => b.Title);
+
+                currentAuthor = authorName;
+            }
+
+            return View(new BooksListByAuthorViewModel
+            {
+                Books = books,
+                CurrentAuthor = currentAuthor
+            });
+        }
+
+        public IActionResult ListByPublisher(string publisherName)
+        {
+            IEnumerable<Book> books;
+            string currentPublisher = string.Empty;
+
+            if (string.IsNullOrEmpty(publisherName))
+            {
+                books = _bookRepository.GetBooks().OrderBy(b => b.Title);
+                currentPublisher = "Tất Cả Các Nhà Xuất Bản";
+            }
+            else
+            {
+                books = _bookRepository.GetBooksByPublisher(publisherName)
+                    .OrderBy(b => b.Title);
+
+                currentPublisher = publisherName;
+            }
+
+            return View(new BooksListByPublisherViewModel
+            {
+                Books = books,
+                CurrentPublisher = currentPublisher
+            });
+        }
+
         public IActionResult Details(Guid id)
         {
             var book = _bookRepository.GetBookById(id);

@@ -18,24 +18,57 @@ namespace BookStore.Repositories
 
         public IEnumerable<Book> GetBooks()
         {
-            return _context.Books.Include(c => c.Category).ToList();
+            return _context.Books
+                .Include(c => c.Category)
+                .Include(a=>a.Author)
+                .Include(p=> p.Publisher)
+                .ToList();
         }
 
         public IEnumerable<Book> GetBooksOfTheWeek()
         {
-            return _context.Books.Include(c => c.Category)
-                .Where(b => b.IsBookOfTheWeek).ToList();
+            return _context.Books
+                .Include(c => c.Category)
+                .Include(a => a.Author)
+                .Include(p => p.Publisher)
+                .Where(b => b.IsBookOfTheWeek)
+                .ToList();
         }
 
         public Book GetBookById(Guid bookId)
         {
-            return _context.Books.FirstOrDefault(b => b.Id == bookId);
+            return _context.Books
+                .Include(c => c.Category)
+                .Include(a => a.Author)
+                .Include(p => p.Publisher)
+                .FirstOrDefault(b => b.Id == bookId);
         }
 
         public IEnumerable<Book> GetBooksByPrice(decimal priceLevel)
         {
-            return _context.Books.Include(c => c.Category)
+            return _context.Books
+                .Include(c => c.Category)
+                .Include(a => a.Author)
+                .Include(p => p.Publisher)
                 .Where(b => b.Price < priceLevel).ToList();
+        }
+
+        public IEnumerable<Book> GetBooksByAuthor(string authorName)
+        {
+            return _context.Books
+                .Include(c => c.Category)
+                .Include(a => a.Author)
+                .Include(p => p.Publisher)
+                .Where(b => b.Author.Name.Contains(authorName)).ToList();
+        }
+
+        public IEnumerable<Book> GetBooksByPublisher(string publisherName)
+        {
+            return _context.Books
+                .Include(c => c.Category)
+                .Include(a => a.Author)
+                .Include(p => p.Publisher)
+                .Where(b => b.Publisher.Name.Contains(publisherName)).ToList();
         }
 
         public void AddBook(Book book)

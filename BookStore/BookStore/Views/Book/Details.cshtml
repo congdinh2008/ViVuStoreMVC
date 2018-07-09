@@ -20,6 +20,8 @@
         <div class="col-md-8">
             <div class="product-cart">
                 <h2>@Model.Book.Title</h2>
+
+                <h4>Tác giả: @Model.Book.Author.Name</h4>
                 <h4>
                     @Model.Book.Price.ToString("C0", CultureInfo.CreateSpecificCulture("vi-VN"))
                 </h4>
@@ -41,6 +43,14 @@
                         <tr>
                             <td>Tựa Sách</td>
                             <td>@Model.Book.Title</td>
+                        </tr>
+                        <tr>
+                            <td>Tác Giả</td>
+                            <td>@Model.Book.Author.Name</td>
+                        </tr>
+                        <tr>
+                            <td>Nhà Xuất Bản</td>
+                            <td>@Model.Book.Publisher.Name</td>
                         </tr>
                         <tr>
                             <td>Số Trang</td>

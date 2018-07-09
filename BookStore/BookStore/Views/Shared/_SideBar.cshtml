@@ -1,7 +1,9 @@
 ﻿<div class="col-sm-3 sidebar hidden-xs">
     <h4>Danh Mục Sách</h4>
     <ul class="navbar-nav mr-auto">
-        @await Component.InvokeAsync("CategorySideBar")
+        @await Component.InvokeAsync("CategorySearch")
         @await Component.InvokeAsync("PriceSearch")
+        @await Component.InvokeAsync("AuthorSearch")
+        @await Component.InvokeAsync("PublisherSearch")
     </ul>
 </div>

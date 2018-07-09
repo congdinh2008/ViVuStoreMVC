@@ -12,5 +12,13 @@ namespace BookStore.ViewModels
         public List<SelectListItem> Categories { get; set; }
 
         public Guid SelectedCategoryId { get; set; }
+
+        public List<SelectListItem> Authors { get; set; }
+
+        public Guid SelectedAuthorId { get; set; }
+
+        public List<SelectListItem> Publishers { get; set; }
+
+        public Guid SelectedPublisherId { get; set; }
     }
 }

@@ -4,10 +4,9 @@
 <hr />
 
 <form asp-controller="BookManagement" asp-action="AddBook" method="post" class="row form-horizontal" role="form">
-    
+    <div asp-validation-summary="All" class="text-danger"></div>
 
     <div class="col">
-        <div asp-validation-summary="All" class="text-danger"></div>
         <div class="form-group">
             <label asp-for="Book.Title" class="control-label"></label>
             <div>
@@ -78,6 +77,20 @@
             <label asp-for="Categories" class="control-label"></label>
             <div>
                 <select asp-for="SelectedCategoryId" class="form-control" asp-items="Model.Categories"></select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Authors" class="control-label"></label>
+            <div>
+                <select asp-for="SelectedAuthorId" class="form-control" asp-items="Model.Authors"></select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Publishers" class="control-label"></label>
+            <div>
+                <select asp-for="SelectedPublisherId" class="form-control" asp-items="Model.Publishers"></select>
             </div>
         </div>
 
