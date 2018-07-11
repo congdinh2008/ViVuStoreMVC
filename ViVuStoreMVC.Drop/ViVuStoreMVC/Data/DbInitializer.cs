@@ -151,9 +151,9 @@ namespace ViVuStoreMVC.Data
                      BookDimensions = "14.5 x 20.5 cm",
                      IsBookOfTheWeek = false,
                      Quantity = 12,
-                     Publisher = publishers.Single(p=>p.Name==("Nhà xuất bản Trẻ")),
-                     Author = authors.Single(a=>a.Name==("J. K. Rowling")),
-                     Category = categories.Single(c=>c.Name==("Literature & Fiction"))
+                     Category = categories.Single(c=>c.Name==("Literature & Fiction")),
+					 Author = authors.Single(a=>a.Name==("J. K. Rowling")),
+					 Publisher = publishers.Single(p=>p.Name==("Nhà xuất bản Trẻ"))
                  },
                  new Book()
                  {
@@ -276,9 +276,9 @@ namespace ViVuStoreMVC.Data
                     BookDimensions = "11.3 x 17.6 cm",
                     IsBookOfTheWeek = true,
                     Quantity = 532,
-                    Publisher = publishers.Single(p=>p.Name==("Nhà xuất bản Kim Đồng")),
-                    Author = authors.Single(a=>a.Name==("Aoyama Gosho")),
-                    Category = categories.Single(c=>c.Name==("Truyện Tranh, Manga, Comic"))
+                    Category = categories.Single(c=>c.Name==("Truyện Tranh, Manga, Comic")),
+					Author = authors.Single(a=>a.Name==("Aoyama Gosho")),
+					Publisher = publishers.Single(p=>p.Name==("Nhà xuất bản Kim Đồng"))
                 },
                 new Book() {
                     Title = "Thám Tử Lừng Danh Conan Tập 2",
@@ -349,9 +349,9 @@ namespace ViVuStoreMVC.Data
                     BookDimensions = "11.3 x 17.6 cm",
                     IsBookOfTheWeek = true,
                     Quantity = 0,
-                    Publisher = publishers.Single(p=>p.Name==("Nhà xuất bản Kim Đồng")),
-                    Author = authors.Single(a=>a.Name==("Eiichiro Oda")),
-                    Category = categories.Single(c=>c.Name==("Truyện Tranh, Manga, Comic"))
+                    Category = categories.Single(c=>c.Name==("Truyện Tranh, Manga, Comic")),
+					Author = authors.Single(a=>a.Name==("Eiichiro Oda")),
+					Publisher = publishers.Single(p=>p.Name==("Nhà xuất bản Kim Đồng"))
                 },
                 new Book() {
                     Title = "One Piece - Tập 2",
